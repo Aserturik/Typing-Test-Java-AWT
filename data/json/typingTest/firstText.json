@@ -1,0 +1,10 @@
+{
+  "nameTest": "PRIMERA PRUEBA DE MECANOGRAFIA",
+  "contentTest": "hola como vas aca te dejo un texto para que lo mecanografies",
+  "correctCharacters": 0,
+  "incorrectCharacters": 0,
+  "ppm": 0,
+  "wpm": 0,
+  "isEnd": false,
+  "isPause": false
+}

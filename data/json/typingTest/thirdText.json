@@ -1,0 +1,10 @@
+{
+  "nameTest": "TERCERA PRUEBA DE MECANOGRAFIA",
+  "contentTest": "hola mundo buen dia como estas hoy y nada que decir solo basta a ver que pasa",
+  "correctCharacters": 0,
+  "incorrectCharacters": 0,
+  "ppm": 0,
+  "wpm": 0,
+  "isEnd": false,
+  "isPause": false
+}
