@@ -205,10 +205,4 @@ public class Presenter implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent keyEvent) {
 
     }
-
-    // Main
-    public static void main(String[] args) {
-        Presenter presenter = new Presenter();
-        presenter.run();
-    }
 }
