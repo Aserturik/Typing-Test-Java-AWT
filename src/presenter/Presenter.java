@@ -16,9 +16,9 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     private Contract.View view;
 
     public void run() {
+        System.out.println("run");
         controlModel = new ControlModel();
         properties = controlModel.getPersistenceData().getProperties();
-        view = new MyFrame(this, properties);
         keyTyped = new ArrayList<String>();
     }
 
