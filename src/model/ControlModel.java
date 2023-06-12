@@ -2,13 +2,15 @@ package model;
 
 import model.persistence.PersistenceConfig;
 import model.persistence.PersistenceData;
+import presenter.Contract;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ControlModel {
+public class ControlModel implements Contract.Model {
     private PersistenceData persistenceData;
     private PersistenceConfig persistenceConfig;
+    private Contract.Presenter presenter;
 
     public ControlModel() {
         persistenceData = new PersistenceData();
@@ -19,7 +21,12 @@ public class ControlModel {
         return persistenceData;
     }
 
-    public TestWords getTest(int index){
+    @Override
+    public void setPresenter(Contract.Presenter presenter) {
+        this.presenter = presenter;
+    }
+
+    public TestWords getTest(int index) {
         return persistenceData.getTest(index);
     }
 
@@ -27,11 +34,11 @@ public class ControlModel {
         return persistenceConfig;
     }
 
-    public ArrayList<Color> getColorList(int indexTest,int indexChar, char charPressed){
-        return persistenceData.getTest(indexTest).getColors(indexChar,charPressed);
+    public ArrayList<Color> getColorList(int indexTest, int indexChar, char charPressed) {
+        return persistenceData.getTest(indexTest).getColors(indexChar, charPressed);
     }
 
-    public ArrayList<Color> getListDefaultColor(int indexTest){
+    public ArrayList<Color> getListDefaultColor(int indexTest) {
         return persistenceData.getTest(indexTest).getDefaultColorList();
     }
 
