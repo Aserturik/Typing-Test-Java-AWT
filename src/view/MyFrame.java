@@ -13,7 +13,7 @@ import java.util.Properties;
 public class MyFrame extends JFrame {
     private PrincipalPanel principalPanel;
     private TypingTestPanel typingTestPanel;
-    private ControlTime controlTime;
+    //private ControlTime controlTime;
     public MyFrame(ActionListener actionListener, Properties properties) {
         Constants.setProperties(properties);
         this.setTitle(Constants.getProperty("titleFrame"));
@@ -25,18 +25,19 @@ public class MyFrame extends JFrame {
     }
 
     public void initComponents(ActionListener listener){
-        controlTime = new ControlTime(10, listener);
+        //controlTime = new ControlTime(10, listener);
+        // en vez del control time debe ir el timer
         principalPanel(listener);
         typingTestPanel(listener);
     }
 
     public void principalPanel(ActionListener actionListener) {
-        principalPanel = new PrincipalPanel(actionListener);
+        principalPanel = new PrincipalPanel(actionListener,this);
         this.add(principalPanel);
     }
 
     public void typingTestPanel(ActionListener actionListener) {
-        typingTestPanel = new TypingTestPanel(actionListener);
+        typingTestPanel = new TypingTestPanel(actionListener, this);
         this.add(typingTestPanel);
         typingTestPanel.setVisible(false);
     }
@@ -48,7 +49,8 @@ public class MyFrame extends JFrame {
         return typingTestPanel;
     }
     public ControlTime getControlTime(){
-        return controlTime;
+        return null;
+        //return controlTime;
     }
 
     public void showPanelLessons(){
