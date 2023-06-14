@@ -1,5 +1,7 @@
 package view.typing;
 
+import view.MyFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -10,9 +12,11 @@ public class TypingTestPanel extends JPanel {
     private TittleTyping tittleTyping;
     private BodyTyping bodyTyping;
     private FooterTyping footerTyping;
-    public TypingTestPanel(ActionListener listener) {
+    private MyFrame view;
+    public TypingTestPanel(ActionListener listener, MyFrame view) {
         this.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
+        this.view = view;
         this.setPreferredSize(new Dimension(1000, 600));
         this.setMinimumSize(new Dimension(1000, 600));
         this.setMaximumSize(new Dimension(1000, 600));

@@ -1,8 +1,8 @@
-import presenter.Presenter;
+import presenter.ManagerGeneral;
 
 public class Main {
     public static void main(String[] args) {
-        Presenter presenter = new Presenter();
-        presenter.run();
+        ManagerGeneral managerGeneral = new ManagerGeneral();
+        managerGeneral.run();
     }
 }

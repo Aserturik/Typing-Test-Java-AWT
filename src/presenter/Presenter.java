@@ -7,18 +7,34 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class Presenter implements ActionListener, KeyListener {
+public class Presenter implements ActionListener, KeyListener, Contract.Presenter {
     private ControlModel controlModel;
-    private MyFrame view;
     private int indexTest;
     private ArrayList<String> keyTyped;
     private Properties properties;
+    private Contract.Model model;
+    private Contract.View view;
 
     public void run() {
+        System.out.println("run");
         controlModel = new ControlModel();
         properties = controlModel.getPersistenceData().getProperties();
-        view = new MyFrame(this,properties);
         keyTyped = new ArrayList<String>();
+    }
+
+    @Override
+    public ActionListener getListener() {
+        return this;
+    }
+
+    @Override
+    public void setModel(Contract.Model model) {
+        this.model = model;
+    }
+
+    @Override
+    public void setView(Contract.View view) {
+        this.view = view;
     }
 
     @Override
@@ -67,39 +83,31 @@ public class Presenter implements ActionListener, KeyListener {
     // Eventos para el panel de Lecciones
     public void lessons() {
         restart();
-        view.showPanelPrincipal();
-        view.getPrincipalPanel().showLessons();
+        view.showLessons();
     }
 
     private void pause() {
         controlModel.getTest(indexTest).pause();
         if (controlModel.getTest(indexTest).isPause()) {
-            view.getTypingTestPanel().getFooterTyping().getPauseButton().setText("Reanudar");
-            view.getControlTime().stop();
+            view.pauseTimer();
         } else {
-            view.getTypingTestPanel().getFooterTyping().getPauseButton().setText("Pausar");
-            view.getControlTime().start();
+            view.reanudeTimer();
         }
     }
 
     private void restart() {
-        view.getControlTime().resetTime();
-        view.getTypingTestPanel().getFooterTyping().setTimerString(properties.getProperty("timeString"));
-        view.getTypingTestPanel().getBodyTyping().clearTextArea();
-        view.setColorList(controlModel.getListDefaultColor(indexTest));
-        view.setPPM(0);
-        view.setWPM(0);
+        view.restart();
         if (controlModel.getTest(indexTest).isPause()) {
             controlModel.getTest(indexTest).pause();
             view.getTypingTestPanel().getFooterTyping().getPauseButton().setText(properties.getProperty("pauseButton"));
         } else {
-            view.getControlTime().stop();
+            //view.getControlTime().stop();
         }
         keyTyped.clear();
     }
 
     private void timer() {
-        view.getTypingTestPanel().getFooterTyping().setTimerString(view.getControlTime().getTimeString());
+       // view.getTypingTestPanel().getFooterTyping().setTimerString(view.getControlTime().getTimeString());
     }
 
     public void openChallenge(int indexTest) {
@@ -110,7 +118,7 @@ public class Presenter implements ActionListener, KeyListener {
         view.getTypingTestPanel().getBodyTyping().setText(controlModel.getTest(indexTest).getContentTest());
         view.getTypingTestPanel().getBodyTyping().setColorListDefault();
         view.getTypingTestPanel().getFooterTyping().setTimerString(properties.getProperty("timeString"));
-        view.showPanelLessons();
+        //view.showPanelLessons();
     }
 
     // Eventos para el panel de Progreso
@@ -147,7 +155,7 @@ public class Presenter implements ActionListener, KeyListener {
             view.setColorList(controlModel.getColorList(indexTest, keyTyped.size() - 1, keyEvent.getKeyChar()));
             if (keyTyped.size() == controlModel.getTest(indexTest).getContentTest().length()) {
                 controlModel.getTest(indexTest).setEndTest(true);
-                view.getControlTime().stop();
+                //view.getControlTime().stop();
                 saveProgress();
             }
         }
@@ -155,13 +163,15 @@ public class Presenter implements ActionListener, KeyListener {
 
     public void isPause() {
         if (controlModel.getTest(indexTest).isPause()) {
-            view.getControlTime().start();
+            //view.getControlTime().start();
+            System.out.println("isPause");
         }
     }
 
     public void isStartTest() {
         if (keyTyped.size() == 1) {
-            new Thread(() -> view.getControlTime().start()).start();
+            //new Thread(() -> view.getControlTime().start()).start();
+            System.out.println("isStartTest");
         }
     }
 
@@ -171,28 +181,28 @@ public class Presenter implements ActionListener, KeyListener {
 
     public void saveProgress() {
         controlModel.getPersistenceData().saveProgress(indexTest);
-        view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setPPMInt(controlModel.getTest(indexTest).getPpm());
-        view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setWPMInt(controlModel.getTest(indexTest).getWpm());
-        view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setCorrectCharsInt(controlModel.getTest(indexTest).getCorrectCharacters());
-        view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setIncorrectCharsInt(controlModel.getTest(indexTest).getIncorrectCharacters());
+        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setPPMInt(controlModel.getTest(indexTest).getPpm());
+        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setWPMInt(controlModel.getTest(indexTest).getWpm());
+        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setCorrectCharsInt(controlModel.getTest(indexTest).getCorrectCharacters());
+        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setIncorrectCharsInt(controlModel.getTest(indexTest).getIncorrectCharacters());
         saveRecords();
     }
 
-    public void saveRecords(){
+    public void saveRecords() {
         controlModel.getPersistenceData().saveRecords();
     }
 
     // pulsaciones por minuto
     public void pPM() {
         if (keyTyped.size() > 1 && !isEndTest()) {
-            view.setPPM(controlModel.getPPM(view.getControlTime().getTime(), indexTest));
+            //view.setPPM(controlModel.getPPM(view.getControlTime().getTime(), indexTest));
         }
     }
 
     // palabras por minuto
     public void wPM() {
         if (keyTyped.size() > 5 && !isEndTest()) {
-            view.setWPM(controlModel.getWPM(view.getControlTime().getTime(), indexTest));
+            //view.setWPM(controlModel.getWPM(view.getControlTime().getTime(), indexTest));
         }
     }
 

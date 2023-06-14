@@ -1,5 +1,6 @@
 package view.panels;
 
+import view.MyFrame;
 import view.config.ConfigPanel;
 import view.progress.ProgressPanel;
 
@@ -14,8 +15,11 @@ public class PrincipalPanel extends JPanel {
     private LessonsPanel lessonsPanel;
     private ConfigPanel configPanel;
     private ProgressPanel progressPanel;
-    public PrincipalPanel(ActionListener listener) {
+    private MyFrame view;
+
+    public PrincipalPanel(ActionListener listener, MyFrame view) {
         setSize(1000, 600);
+        this.view = view;
         this.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
         initComponents(listener);
@@ -37,7 +41,7 @@ public class PrincipalPanel extends JPanel {
         buttonsPrincipalPanel();
     }
 
-    public void showMenu(){
+    public void showMenu() {
         lessonsPanel.setVisible(false);
         configPanel.setVisible(false);
         progressPanel.setVisible(false);
@@ -58,7 +62,7 @@ public class PrincipalPanel extends JPanel {
     }
 
     // metodo para el gbc de la derecha
-    public void rightGBC(){
+    public void rightGBC() {
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.gridwidth = 1;
@@ -72,35 +76,35 @@ public class PrincipalPanel extends JPanel {
 
     public void buttonsPrincipalPanel() {
         rightGBC();
-        this.add(buttonsPrincipalPanel,gbc);
+        this.add(buttonsPrincipalPanel, gbc);
     }
 
-    public void lessonsPanel(){
+    public void lessonsPanel() {
         rightGBC();
-        this.add(lessonsPanel,gbc);
+        this.add(lessonsPanel, gbc);
     }
 
-    public void showLessons(){
+    public void showLessons() {
         buttonsPrincipalPanel.setVisible(false);
         lessonsPanel.setVisible(true);
     }
 
-    public void configPanel(){
+    public void configPanel() {
         rightGBC();
-        this.add(configPanel,gbc);
+        this.add(configPanel, gbc);
     }
 
-    public void showConfig(){
+    public void showConfig() {
         buttonsPrincipalPanel.setVisible(false);
         configPanel.setVisible(true);
     }
 
-    public void progressPanel(){
+    public void progressPanel() {
         rightGBC();
-        this.add(progressPanel,gbc);
+        this.add(progressPanel, gbc);
     }
 
-    public void showProgress(){
+    public void showProgress() {
         buttonsPrincipalPanel.setVisible(false);
         configPanel.setVisible(false);
         lessonsPanel.setVisible(false);
@@ -111,7 +115,7 @@ public class PrincipalPanel extends JPanel {
         return progressPanel;
     }
 
-    public void setSizesFont(String[] sizes){
+    public void setSizesFont(String[] sizes) {
         configPanel.setFontSizeComboBox(sizes);
     }
 
