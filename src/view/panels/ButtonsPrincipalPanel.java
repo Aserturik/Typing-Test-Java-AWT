@@ -1,6 +1,6 @@
 package view.panels;
 
-import view.Constants;
+import util.Constants;
 import view.buttons.PrincipalButton;
 
 import javax.swing.*;

@@ -1,8 +1,8 @@
 package view;
 
 import presenter.Contract;
+import util.Constants;
 import view.panels.PrincipalPanel;
-import view.timer.ControlTime;
 import view.typing.TypingTestPanel;
 
 import javax.swing.*;

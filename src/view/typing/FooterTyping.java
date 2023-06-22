@@ -1,6 +1,6 @@
 package view.typing;
 
-import view.Constants;
+import util.Constants;
 import view.buttons.TypingButton;
 
 import javax.swing.*;

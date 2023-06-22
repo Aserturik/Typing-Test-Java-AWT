@@ -1,6 +1,6 @@
 package view.timer;
 
-import view.Constants;
+import util.Constants;
 
 import javax.swing.Timer;
 import java.awt.event.ActionListener;

@@ -1,6 +1,6 @@
 package view.progress;
 
-import view.Constants;
+import util.Constants;
 
 import javax.swing.*;
 import java.awt.*;

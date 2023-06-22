@@ -1,6 +1,6 @@
 package view.progress;
 
-import view.Constants;
+import util.Constants;
 import view.buttons.PrincipalButton;
 import view.panels.RightPanel;
 
