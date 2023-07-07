@@ -16,7 +16,6 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     private Contract.View view;
 
     public void run() {
-        System.out.println("run");
         controlModel = new ControlModel();
         properties = controlModel.getPersistenceData().getProperties();
         keyTyped = new ArrayList<String>();
@@ -58,6 +57,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
                 break;
             case "CHALLENGE_ONE":
                 openChallenge(0);
+                System.out.println("CHALLENGE_ONE");
                 break;
             case "CHALLENGE_TWO":
                 openChallenge(1);
@@ -118,7 +118,8 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
         view.getTypingTestPanel().getBodyTyping().setText(controlModel.getTest(indexTest).getContentTest());
         view.getTypingTestPanel().getBodyTyping().setColorListDefault();
         view.getTypingTestPanel().getFooterTyping().setTimerString(properties.getProperty("timeString"));
-        //view.showPanelLessons();
+
+        view.showPanelLessons();
     }
 
     // Eventos para el panel de Progreso

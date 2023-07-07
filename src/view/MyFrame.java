@@ -15,7 +15,6 @@ public class MyFrame extends JFrame implements Contract.View {
     private PrincipalPanel principalPanel;
     private TypingTestPanel typingTestPanel;
     private Contract.Presenter presenter;
-
     public MyFrame(ActionListener actionListener, Properties properties) {
         Constants.setProperties(properties);
         this.setTitle(Constants.getProperty("titleFrame"));
@@ -51,7 +50,7 @@ public class MyFrame extends JFrame implements Contract.View {
     public TypingTestPanel getTypingTestPanel() {
         return typingTestPanel;
     }
-
+    @Override
     public void showPanelLessons() {
         principalPanel.setVisible(false);
         typingTestPanel.setVisible(true);

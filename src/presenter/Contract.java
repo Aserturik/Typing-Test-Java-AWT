@@ -38,6 +38,7 @@ public interface Contract {
         PrincipalPanel getPrincipalPanel();
 
         void setColorList(ArrayList<Color> colorList);
+        void showPanelLessons();
     }
 
     public interface Model {
