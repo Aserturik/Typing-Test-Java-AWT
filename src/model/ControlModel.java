@@ -2,6 +2,7 @@ package model;
 
 import model.persistence.PersistenceConfig;
 import model.persistence.PersistenceData;
+import model.time.Cronometer;
 import presenter.Contract;
 
 import java.awt.*;
@@ -11,6 +12,7 @@ public class ControlModel implements Contract.Model {
     private PersistenceData persistenceData;
     private PersistenceConfig persistenceConfig;
     private Contract.Presenter presenter;
+    private int charsTyped;
 
     public ControlModel() {
         persistenceData = new PersistenceData();
@@ -35,6 +37,7 @@ public class ControlModel implements Contract.Model {
     }
 
     public ArrayList<Color> getColorList(int indexTest, int indexChar, char charPressed) {
+        charsTyped++;
         return persistenceData.getTest(indexTest).getColors(indexChar, charPressed);
     }
 
@@ -42,8 +45,8 @@ public class ControlModel implements Contract.Model {
         return persistenceData.getTest(indexTest).getDefaultColorList();
     }
 
-    public int getPPM(String time, int indexTest) {
-        return persistenceData.getTest(indexTest).getPPM(time);
+    public int getPPM() {
+        return Cronometer.getInstance().getSeconds()/charsTyped;
     }
 
     public int getWPM(String time, int indexTest) {

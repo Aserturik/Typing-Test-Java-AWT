@@ -31,5 +31,11 @@ public class Cronometer {
         int seconds = (int) ((time % 60000) / 1000);
         return String.format("%02d:%02d", minutes, seconds);
     }
+
+    public int getSeconds() {
+        long time = System.currentTimeMillis() - initialTime;
+        int seconds = (int) ((time % 60000) / 1000);
+        return seconds;
+    }
 }
 

@@ -1,7 +1,6 @@
 package presenter;
 
 import model.ControlModel;
-import view.MyFrame;
 
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -57,7 +56,6 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
                 break;
             case "CHALLENGE_ONE":
                 openChallenge(0);
-                System.out.println("CHALLENGE_ONE");
                 break;
             case "CHALLENGE_TWO":
                 openChallenge(1);
@@ -182,6 +180,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
     public void saveProgress() {
         controlModel.getPersistenceData().saveProgress(indexTest);
+        view.setPPM(controlModel.getPPM());
         //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setPPMInt(controlModel.getTest(indexTest).getPpm());
         //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setWPMInt(controlModel.getTest(indexTest).getWpm());
         //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setCorrectCharsInt(controlModel.getTest(indexTest).getCorrectCharacters());

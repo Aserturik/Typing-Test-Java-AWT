@@ -39,6 +39,7 @@ public interface Contract {
 
         void setColorList(ArrayList<Color> colorList);
         void showPanelLessons();
+        void setPPM(int ppm);
     }
 
     public interface Model {
