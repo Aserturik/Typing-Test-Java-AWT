@@ -15,6 +15,7 @@ public class MyFrame extends JFrame implements Contract.View {
     private PrincipalPanel principalPanel;
     private TypingTestPanel typingTestPanel;
     private Contract.Presenter presenter;
+    
     public MyFrame(ActionListener actionListener, Properties properties) {
         Constants.setProperties(properties);
         this.setTitle(Constants.getProperty("titleFrame"));
