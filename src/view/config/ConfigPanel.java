@@ -9,12 +9,13 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class ConfigPanel extends RightPanel {
-    private GridBagConstraints gbc;
-    private JComboBox;
-    private fontComboBox;
-    private fontSizeComboBox;
-    private PrincipalButton;
-    private backMenuButton;
+	private static final long serialVersionUID = 1L;
+
+	private GridBagConstraints gbc;
+    private JComboBox<String> fontComboBox;
+    private JComboBox<String> fontSizeComboBox;
+    private PrincipalButton backMenuButton;
+    
     public ConfigPanel(ActionListener listener){
         gbc = new GridBagConstraints();
         this.setLayout(new GridBagLayout());
@@ -42,6 +43,7 @@ public class ConfigPanel extends RightPanel {
         previewFont(gg);
         sizeTitle(gg);
     }
+    
     public void title(){
         JLabel title = super.title(Constants.getProperty(Constants.SETTINGS));
         gbc.gridy = 0;
@@ -57,7 +59,7 @@ public class ConfigPanel extends RightPanel {
 
     public void fontComboBox(){
         String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-        fontComboBox = new JComboBox(fonts);
+        fontComboBox = new JComboBox<String>(fonts);
         gbc.gridy = 2;
         fontComboBox.setBackground(Constants.DARK_BLUE);
         fontComboBox.setForeground(Constants.WHITE);
@@ -75,7 +77,7 @@ public class ConfigPanel extends RightPanel {
     }
 
     public void sizeFontComboBox(String[] sizes){
-        fontSizeComboBox = new JComboBox(sizes);
+        fontSizeComboBox = new JComboBox<String>(sizes);
         gbc.gridy = 3;
         fontSizeComboBox.setBackground(Constants.DARK_BLUE);
         fontSizeComboBox.setForeground(Constants.WHITE);
