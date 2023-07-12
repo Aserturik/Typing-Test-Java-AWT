@@ -10,8 +10,11 @@ import java.awt.event.ActionListener;
 
 public class ConfigPanel extends RightPanel {
     private GridBagConstraints gbc;
-    private JComboBox fontComboBox, fontSizeComboBox;
-    private PrincipalButton backMenuButton;
+    private JComboBox;
+    private fontComboBox;
+    private fontSizeComboBox;
+    private PrincipalButton;
+    private backMenuButton;
     public ConfigPanel(ActionListener listener){
         gbc = new GridBagConstraints();
         this.setLayout(new GridBagLayout());
