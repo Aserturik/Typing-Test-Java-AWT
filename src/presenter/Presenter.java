@@ -11,7 +11,6 @@ import java.util.Properties;
 
 public class Presenter implements ActionListener, KeyListener, Contract.Presenter {
 	
-	private final String pathConfig = "data/properties/paths.properties";
 	private ControlModel controlModel;
 	private int indexTest;
 	private ArrayList<String> keyTyped;
@@ -151,12 +150,6 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 		default:
 			break;
 		}
-	}
-	
-	private Properties path() throws FileNotFoundException, IOException {
-		Properties configProper = new Properties();
-		configProper.load(new FileReader(pathConfig));
-		return configProper;
 	}
 
 	// Eventos Globales

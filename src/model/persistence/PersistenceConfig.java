@@ -9,9 +9,10 @@ import java.io.*;
 
 public class PersistenceConfig {
     private ConfigFonts configFonts;
+    private  final String path = "data/json/jsonConfig/jsonConfig.json";
     public PersistenceConfig() {
         try {
-            JsonReader reader = new Gson().newJsonReader(new FileReader("data/json/jsonConfig/jsonConfig.json"));
+            JsonReader reader = new Gson().newJsonReader(new FileReader(path));
             configFonts = new Gson().fromJson(reader, ConfigFonts.class);
         }catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -24,7 +25,7 @@ public class PersistenceConfig {
 
     public void setFontSize(int sizeFont){
         configFonts.setSizeFont(sizeFont);
-        try(FileWriter writer = new FileWriter("data/json/jsonConfig/jsonConfig.json");
+        try(FileWriter writer = new FileWriter(path);
                 JsonWriter jsonWriter = new Gson().newJsonWriter(writer)) {
             String json = new Gson().toJson(configFonts);
             jsonWriter.jsonValue(json);
@@ -37,7 +38,7 @@ public class PersistenceConfig {
         configFonts.setFontUse(fontUse);
         try {
             String json = new Gson().toJson(configFonts);
-            FileWriter writer = new FileWriter("data/json/jsonConfig/jsonConfig.json");
+            FileWriter writer = new FileWriter(path);
             JsonWriter jsonWriter = new Gson().newJsonWriter(writer);
             jsonWriter.jsonValue(json);
             jsonWriter.close();
