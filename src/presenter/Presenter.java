@@ -138,10 +138,11 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 		view.getPrincipalPanel().showConfig();
 	}
 
-	public void change() {
+	public void change() throws FileNotFoundException, IOException {
 		String language = view.getPrincipalPanel().languageChange();
 		switch (language) {
 		case "GO BACK TO MENU":
+			
 			run(path().getProperty("ES"));
 			break;
 		case "CAMBIAR A INGLES":
@@ -151,7 +152,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 			break;
 		}
 	}
-	
+
 	private Properties path() throws FileNotFoundException, IOException {
 		Properties configProper = new Properties();
 		configProper.load(new FileReader(pathConfig));
