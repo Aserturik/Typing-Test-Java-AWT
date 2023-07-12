@@ -24,12 +24,10 @@ public class PersistenceConfig {
 
     public void setFontSize(int sizeFont){
         configFonts.setSizeFont(sizeFont);
-        try {
+        try(FileWriter writer = new FileWriter("data/json/jsonConfig/jsonConfig.json");
+                JsonWriter jsonWriter = new Gson().newJsonWriter(writer)) {
             String json = new Gson().toJson(configFonts);
-            FileWriter writer = new FileWriter("data/json/jsonConfig/jsonConfig.json");
-            JsonWriter jsonWriter = new Gson().newJsonWriter(writer);
             jsonWriter.jsonValue(json);
-            jsonWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

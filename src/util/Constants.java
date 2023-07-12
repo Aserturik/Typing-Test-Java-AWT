@@ -17,6 +17,7 @@ public class Constants {
     public static final String CHALLENGE_TWO = "CHALLENGE_TWO";
     public static final String CHALLENGE_THREE = "CHALLENGE_THREE";
     public static final String CHALLENGE_FOUR = "CHALLENGE_FOUR";
+    public static final String LANGUAGE_CHANGE = "LANGUAGE_CHANGE";
     public static final String BACK_MENU = "BACK_MENU";
     public static final String BACK_MENU_CONFIG = "BACK_MENU_CONFIG";
     public static final String BACK_BUTTON_TITLE = "BACK_BUTTON_TITLE";
