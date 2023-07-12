@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public interface Contract {
     public interface Presenter {
-        void run();
+        void run(String path);
 
         ActionListener getListener();
 

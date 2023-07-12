@@ -18,6 +18,11 @@ public class ControlModel implements Contract.Model {
         persistenceData = new PersistenceData(path);
         persistenceConfig = new PersistenceConfig();
     }
+    
+    public ControlModel() {
+        persistenceData = new PersistenceData("data/properties/dataEN.properties");
+        persistenceConfig = new PersistenceConfig();
+    }
 
     public PersistenceData getPersistenceData() {
         return persistenceData;
