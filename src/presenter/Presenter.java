@@ -51,6 +51,9 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
             case "SETTINGS":
                 config();
                 break;
+            case "LANGUAGE_CHANGE":
+            	change();
+            	break;
             case "BACK_MENU":
                 backMenu();
                 break;
@@ -130,6 +133,10 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
         view.getPrincipalPanel().setSizesFont(controlModel.getPersistenceConfig().getFontSizes());
         view.getPrincipalPanel().showConfig();
     }
+    
+    private void change() {
+		
+	}
 
     // Eventos Globales
     public void backMenu() {

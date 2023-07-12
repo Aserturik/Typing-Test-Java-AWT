@@ -28,7 +28,7 @@ public class PersistenceData {
     public void loadProperties(){
         properties = new Properties();
         try {
-            properties.load(new FileReader("data/properties/data.properties"));
+            properties.load(new FileReader("data/properties/dataEN.properties"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
