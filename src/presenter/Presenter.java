@@ -1,4 +1,6 @@
 package presenter;
+import model.time.Cronometer;
+
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -95,12 +97,13 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
             view.getTypingTestPanel().getFooterTyping().getPauseButton().setText(properties.getProperty("pauseButton"));
         } else {
             //view.getControlTime().stop();
+            Cronometer.getInstance().pauseTime();
         }
         keyTyped.clear();
     }
 
     private void timer() {
-        // view.getTypingTestPanel().getFooterTyping().setTimerString(view.getControlTime().getTimeString());
+        view.getTypingTestPanel().getFooterTyping().setTimerString(Cronometer.getInstance().getTime());
     }
 
     public void openChallenge(int indexTest) {
@@ -157,7 +160,8 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
     public void isPause() {
         if (model.getTest(indexTest).isPause()) {
-            //view.getControlTime().start();
+            Cronometer.getInstance().start();
+            model.startCronometer();
             System.out.println("isPause");
         }
     }
@@ -165,6 +169,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     public void isStartTest() {
         if (keyTyped.size() == 1) {
             //new Thread(() -> view.getControlTime().start()).start();
+            model.startCronometer();
             System.out.println("isStartTest");
         }
     }
@@ -190,7 +195,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     // pulsaciones por minuto
     public void pPM() {
         if (keyTyped.size() > 1 && !isEndTest()) {
-            //view.setPPM(model.getPPM(view.getControlTime().getTime(), indexTest));
+            view.setPPM(model.getPPM());
         }
     }
 

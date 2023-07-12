@@ -1,5 +1,6 @@
 package view.typing;
 
+import model.time.Cronometer;
 import util.Constants;
 import view.buttons.TypingButton;
 
@@ -8,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class FooterTyping extends JPanel {
-    private String timerString;
+    private String timerString = "00:00";
     private int ppm, wpm;
     private boolean isStart;
     private GridBagConstraints gbc;
@@ -103,7 +104,19 @@ public class FooterTyping extends JPanel {
     }
 
     public void setTimerString(String timerString) {
-        this.timerString = timerString;
-        repaint();
+        Cronometer.getInstance().start();
+        Thread thread = new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    System.out.println("Error en el hilo del cronometro");
+                }
+                this.timerString = Cronometer.getInstance().getTime();
+                repaint();
+            }
+        });
+
+        thread.start();
     }
 }

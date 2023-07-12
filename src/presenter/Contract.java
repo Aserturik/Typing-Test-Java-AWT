@@ -52,5 +52,7 @@ public interface Contract {
         ArrayList<Color> getColorList(int indexTest, int indexChar, char charPressed);
         int getPPM();
         void setPresenter(Presenter presenter);
+        int getTimer();
+        void startCronometer();
     }
 }
