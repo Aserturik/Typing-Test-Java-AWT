@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 public class Presenter implements ActionListener, KeyListener, Contract.Presenter {
+	
 	private final String pathConfig = "data/properties/paths.properties";
 	private ControlModel controlModel;
 	private int indexTest;
@@ -18,7 +19,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 	private Contract.Model model;
 	private Contract.View view;
 
-	public void run(String path) {
+	public void run() {
 		controlModel = new ControlModel();
 		properties = controlModel.getPersistenceData().getProperties();
 		keyTyped = new ArrayList<String>();
@@ -138,21 +139,20 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 		view.getPrincipalPanel().showConfig();
 	}
 
-	public void change() throws FileNotFoundException, IOException {
+	public void change() {
 		String language = view.getPrincipalPanel().languageChange();
 		switch (language) {
 		case "GO BACK TO MENU":
-			
-			run(path().getProperty("ES"));
+			run();
 			break;
 		case "CAMBIAR A INGLES":
-			run(path().getProperty("EN"));
+			run();
 			break;
 		default:
 			break;
 		}
 	}
-
+	
 	private Properties path() throws FileNotFoundException, IOException {
 		Properties configProper = new Properties();
 		configProper.load(new FileReader(pathConfig));

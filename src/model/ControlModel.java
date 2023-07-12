@@ -20,7 +20,7 @@ public class ControlModel implements Contract.Model {
     }
     
     public ControlModel() {
-        persistenceData = new PersistenceData("data/properties/dataEN.properties");
+        persistenceData = new PersistenceData("data/properties/dataES.properties");
         persistenceConfig = new PersistenceConfig();
     }
 
