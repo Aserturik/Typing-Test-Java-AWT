@@ -14,8 +14,8 @@ public class ControlModel implements Contract.Model {
     private Contract.Presenter presenter;
     private int charsTyped;
 
-    public ControlModel() {
-        persistenceData = new PersistenceData();
+    public ControlModel(String path) {
+        persistenceData = new PersistenceData(path);
         persistenceConfig = new PersistenceConfig();
     }
 
