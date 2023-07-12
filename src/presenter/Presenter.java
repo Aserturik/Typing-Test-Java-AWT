@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 public class Presenter implements ActionListener, KeyListener, Contract.Presenter {
-    //private Controlmodel model;
     private int indexTest;
     private ArrayList<String> keyTyped;
     private Properties properties;

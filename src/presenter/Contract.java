@@ -1,5 +1,7 @@
 package presenter;
 
+import model.TestWords;
+import model.persistence.PersistenceConfig;
 import model.persistence.PersistenceData;
 import view.panels.PrincipalPanel;
 import view.typing.TypingTestPanel;
@@ -45,7 +47,10 @@ public interface Contract {
     public interface Model {
 
         PersistenceData getPersistenceData();
-
+        TestWords getTest(int index);
+        PersistenceConfig getPersistenceConfig();
+        ArrayList<Color> getColorList(int indexTest, int indexChar, char charPressed);
+        int getPPM();
         void setPresenter(Presenter presenter);
     }
 }
