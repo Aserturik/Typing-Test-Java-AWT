@@ -1,13 +1,10 @@
 package presenter;
-
-import model.ControlModel;
-
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
 public class Presenter implements ActionListener, KeyListener, Contract.Presenter {
-    private ControlModel controlModel;
+    //private Controlmodel model;
     private int indexTest;
     private ArrayList<String> keyTyped;
     private Properties properties;
@@ -15,8 +12,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     private Contract.View view;
 
     public void run() {
-        controlModel = new ControlModel();
-        properties = controlModel.getPersistenceData().getProperties();
+        properties = model.getPersistenceData().getProperties();
         keyTyped = new ArrayList<String>();
     }
 
@@ -85,8 +81,8 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     }
 
     private void pause() {
-        controlModel.getTest(indexTest).pause();
-        if (controlModel.getTest(indexTest).isPause()) {
+        model.getTest(indexTest).pause();
+        if (model.getTest(indexTest).isPause()) {
             view.pauseTimer();
         } else {
             view.reanudeTimer();
@@ -95,8 +91,8 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
     private void restart() {
         view.restart();
-        if (controlModel.getTest(indexTest).isPause()) {
-            controlModel.getTest(indexTest).pause();
+        if (model.getTest(indexTest).isPause()) {
+            model.getTest(indexTest).pause();
             view.getTypingTestPanel().getFooterTyping().getPauseButton().setText(properties.getProperty("pauseButton"));
         } else {
             //view.getControlTime().stop();
@@ -105,15 +101,15 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     }
 
     private void timer() {
-       // view.getTypingTestPanel().getFooterTyping().setTimerString(view.getControlTime().getTimeString());
+        // view.getTypingTestPanel().getFooterTyping().setTimerString(view.getControlTime().getTimeString());
     }
 
     public void openChallenge(int indexTest) {
         this.indexTest = indexTest;
-        view.getTypingTestPanel().getBodyTyping().setFontSize(controlModel.getPersistenceConfig().getFontSize());
-        view.getTypingTestPanel().getBodyTyping().setFontUse(controlModel.getPersistenceConfig().getFont());
-        view.getTypingTestPanel().getTittleTyping().setTitle(controlModel.getTest(indexTest).getNameTest());
-        view.getTypingTestPanel().getBodyTyping().setText(controlModel.getTest(indexTest).getContentTest());
+        view.getTypingTestPanel().getBodyTyping().setFontSize(model.getPersistenceConfig().getFontSize());
+        view.getTypingTestPanel().getBodyTyping().setFontUse(model.getPersistenceConfig().getFont());
+        view.getTypingTestPanel().getTittleTyping().setTitle(model.getTest(indexTest).getNameTest());
+        view.getTypingTestPanel().getBodyTyping().setText(model.getTest(indexTest).getContentTest());
         view.getTypingTestPanel().getBodyTyping().setColorListDefault();
         view.getTypingTestPanel().getFooterTyping().setTimerString(properties.getProperty("timeString"));
 
@@ -127,7 +123,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
     // Eventos para el panel de Configuracion
     public void config() {
-        view.getPrincipalPanel().setSizesFont(controlModel.getPersistenceConfig().getFontSizes());
+        view.getPrincipalPanel().setSizesFont(model.getPersistenceConfig().getFontSizes());
         view.getPrincipalPanel().showConfig();
     }
 
@@ -137,8 +133,8 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     }
 
     public void backMenuConfig() {
-        controlModel.getPersistenceConfig().setFontSize(view.getPrincipalPanel().getFontSize());
-        controlModel.getPersistenceConfig().setFontUse(view.getPrincipalPanel().getFontUse());
+        model.getPersistenceConfig().setFontSize(view.getPrincipalPanel().getFontSize());
+        model.getPersistenceConfig().setFontUse(view.getPrincipalPanel().getFontUse());
         view.getPrincipalPanel().showMenu();
     }
 
@@ -151,9 +147,9 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
         pPM();
         wPM();
         if (!isEndTest()) {
-            view.setColorList(controlModel.getColorList(indexTest, keyTyped.size() - 1, keyEvent.getKeyChar()));
-            if (keyTyped.size() == controlModel.getTest(indexTest).getContentTest().length()) {
-                controlModel.getTest(indexTest).setEndTest(true);
+            view.setColorList(model.getColorList(indexTest, keyTyped.size() - 1, keyEvent.getKeyChar()));
+            if (keyTyped.size() == model.getTest(indexTest).getContentTest().length()) {
+                model.getTest(indexTest).setEndTest(true);
                 //view.getControlTime().stop();
                 saveProgress();
             }
@@ -161,7 +157,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     }
 
     public void isPause() {
-        if (controlModel.getTest(indexTest).isPause()) {
+        if (model.getTest(indexTest).isPause()) {
             //view.getControlTime().start();
             System.out.println("isPause");
         }
@@ -175,34 +171,34 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     }
 
     public boolean isEndTest() {
-        return controlModel.getTest(indexTest).isEndTest();
+        return model.getTest(indexTest).isEndTest();
     }
 
     public void saveProgress() {
-        controlModel.getPersistenceData().saveProgress(indexTest);
-        view.setPPM(controlModel.getPPM());
-        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setPPMInt(controlModel.getTest(indexTest).getPpm());
-        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setWPMInt(controlModel.getTest(indexTest).getWpm());
-        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setCorrectCharsInt(controlModel.getTest(indexTest).getCorrectCharacters());
-        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setIncorrectCharsInt(controlModel.getTest(indexTest).getIncorrectCharacters());
+        model.getPersistenceData().saveProgress(indexTest);
+        view.setPPM(model.getPPM());
+        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setPPMInt(model.getTest(indexTest).getPpm());
+        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setWPMInt(model.getTest(indexTest).getWpm());
+        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setCorrectCharsInt(model.getTest(indexTest).getCorrectCharacters());
+        //view.getPrincipalPanel().getProgressPanel().getPSP(indexTest).setIncorrectCharsInt(model.getTest(indexTest).getIncorrectCharacters());
         saveRecords();
     }
 
     public void saveRecords() {
-        controlModel.getPersistenceData().saveRecords();
+        model.getPersistenceData().saveRecords();
     }
 
     // pulsaciones por minuto
     public void pPM() {
         if (keyTyped.size() > 1 && !isEndTest()) {
-            //view.setPPM(controlModel.getPPM(view.getControlTime().getTime(), indexTest));
+            //view.setPPM(model.getPPM(view.getControlTime().getTime(), indexTest));
         }
     }
 
     // palabras por minuto
     public void wPM() {
         if (keyTyped.size() > 5 && !isEndTest()) {
-            //view.setWPM(controlModel.getWPM(view.getControlTime().getTime(), indexTest));
+            //view.setWPM(model.getWPM(view.getControlTime().getTime(), indexTest));
         }
     }
 
