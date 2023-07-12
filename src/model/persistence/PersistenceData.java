@@ -18,17 +18,17 @@ public class PersistenceData {
     private Properties properties;
     private PersistenceRecords records;
 
-    public PersistenceData() {
+    public PersistenceData(String path) {
         testWords = new ArrayList<TestWords>();
-        loadProperties();
+        loadProperties(path);
         loadAllTest();
         loadRecords();
     }
 
-    public void loadProperties(){
+    public void loadProperties(String path){
         properties = new Properties();
         try {
-            properties.load(new FileReader("data/properties/dataEN.properties"));
+            properties.load(new FileReader(path));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

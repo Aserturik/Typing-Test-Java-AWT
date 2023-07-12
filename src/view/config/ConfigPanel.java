@@ -120,6 +120,10 @@ public class ConfigPanel extends RightPanel {
         backMenuButton.addActionListener(listener);
         this.add(backMenuButton, gbc);
     }
+    
+    public String languageChange() {
+		return languageChange.getText();
+	}
 
     public int getFontSize(){
         return Integer.parseInt((String) fontSizeComboBox.getSelectedItem());
