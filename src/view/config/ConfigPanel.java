@@ -14,7 +14,9 @@ public class ConfigPanel extends RightPanel {
 	private GridBagConstraints gbc;
     private JComboBox<String> fontComboBox;
     private JComboBox<String> fontSizeComboBox;
+//    private PrincipalButton 
     private PrincipalButton backMenuButton;
+    
     
     public ConfigPanel(ActionListener listener){
         gbc = new GridBagConstraints();
@@ -45,7 +47,7 @@ public class ConfigPanel extends RightPanel {
     }
     
     public void title(){
-        JLabel title = super.title(Constants.getProperty(Constants.SETTINGS));
+        JLabel title = super.title(Constants.getProperty("settings"));
         gbc.gridy = 0;
         this.add(title, gbc);
     }
