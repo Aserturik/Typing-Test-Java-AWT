@@ -14,7 +14,7 @@ public class ConfigPanel extends RightPanel {
 	private GridBagConstraints gbc;
     private JComboBox<String> fontComboBox;
     private JComboBox<String> fontSizeComboBox;
-//    private PrincipalButton 
+    private PrincipalButton languageChange;
     private PrincipalButton backMenuButton;
     
     
@@ -70,7 +70,7 @@ public class ConfigPanel extends RightPanel {
 
     public void previewFont(Graphics2D gg){
         String font = (String) fontComboBox.getSelectedItem();
-        Font font1 = new Font(font, Font.PLAIN, 25);
+        Font font1 = new Font(Constants.getProperty("arial"), Font.PLAIN, 25);
         gg.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         gg.setColor(Color.WHITE);
         gg.setFont(font1);
