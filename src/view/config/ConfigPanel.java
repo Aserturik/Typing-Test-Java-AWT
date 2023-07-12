@@ -38,6 +38,7 @@ public class ConfigPanel extends RightPanel {
         font();
         fontComboBox();
         sizeFontComboBox(new String[]{});
+        languageChange(listener);
         backMenuButton(listener);
     }
 
@@ -102,9 +103,18 @@ public class ConfigPanel extends RightPanel {
         gg.drawString(Constants.getProperty("size"), 170, 375);
         repaint();
     }
+    
+    public void languageChange(ActionListener listener) {
+    	gbc = super.gbcPrincipalButton(gbc,0,5);
+		languageChange = new PrincipalButton(Constants.getProperty("languageChange"));
+		languageChange.setActionCommand(Constants.LANGUAGE_CHANGE);
+		languageChange.addActionListener(listener);
+		this.add(languageChange, gbc);
+
+	}
 
     public void backMenuButton(ActionListener listener){
-        gbc = super.gbcPrincipalButton(gbc,0,5);
+        gbc = super.gbcPrincipalButton(gbc,0,10);
         backMenuButton = new PrincipalButton(Constants.getProperty("backMenu"));
         backMenuButton.setActionCommand(Constants.BACK_MENU_CONFIG);
         backMenuButton.addActionListener(listener);
