@@ -14,16 +14,17 @@ public class ControlModel implements Contract.Model {
     private Contract.Presenter presenter;
     private int charsTyped;
 
+    public ControlModel() {
+        persistenceData = new PersistenceData("ES");
+        persistenceConfig = new PersistenceConfig();
+    }
+    
     public ControlModel(String path) {
         persistenceData = new PersistenceData(path);
         persistenceConfig = new PersistenceConfig();
     }
-    
-    public ControlModel() {
-        persistenceData = new PersistenceData("data/properties/dataES.properties");
-        persistenceConfig = new PersistenceConfig();
-    }
 
+    
     public PersistenceData getPersistenceData() {
         return persistenceData;
     }

@@ -28,7 +28,17 @@ public class PersistenceData {
     public void loadProperties(String path){
         properties = new Properties();
         try {
-            properties.load(new FileReader(path));
+        	switch (path) {
+			case "ES":
+				properties.load(new FileReader("data/properties/dataES.properties"));
+				break;
+			case "EN":
+				properties.load(new FileReader("data/properties/dataEN.properties"));
+				break;
+			default:
+				break;
+			}
+            
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

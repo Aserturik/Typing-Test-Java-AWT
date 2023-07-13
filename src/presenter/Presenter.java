@@ -17,9 +17,10 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 	private Properties properties;
 	private Contract.Model model;
 	private Contract.View view;
+	private String path = "ES";
 
 	public void run() {
-		controlModel = new ControlModel();
+		controlModel = new ControlModel(path);
 		properties = controlModel.getPersistenceData().getProperties();
 		keyTyped = new ArrayList<String>();
 	}
@@ -142,10 +143,14 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 		String language = view.getPrincipalPanel().languageChange();
 		switch (language) {
 		case "GO BACK TO MENU":
+			path = "ES";
 			run();
+			System.out.println("AVISO A ESPAÑOL");
 			break;
 		case "CAMBIAR A INGLES":
+			path = "EN";
 			run();
+			System.out.println("AVISO A INGLES");
 			break;
 		default:
 			break;
