@@ -140,21 +140,25 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 	}
 
 	public void change() {
-		String language = view.getPrincipalPanel().languageChange();
-		switch (language) {
-		case "GO BACK TO MENU":
-			path = "ES";
-			run();
-			System.out.println("AVISO A ESPAÑOL");
-			break;
-		case "CAMBIAR A INGLES":
-			path = "EN";
-			run();
-			System.out.println("AVISO A INGLES");
-			break;
-		default:
-			break;
-		}
+//		String language = view.getPrincipalPanel().languageChange();
+//		switch (language) {
+//		case "GO BACK TO MENU":
+//			path = "ES";
+//			run();
+//			setModel(controlModel);
+//			setView(view);
+//			System.out.println("AVISO A ESPAÑOL");
+//			break;
+//		case "CAMBIAR A INGLES":
+//			path = "EN";
+//			run();
+//			setModel(controlModel);
+//			setView(view);
+//			System.out.println("AVISO A INGLES");
+//			break;
+//		default:
+//			break;
+//		}
 	}
 
 	// Eventos Globales
