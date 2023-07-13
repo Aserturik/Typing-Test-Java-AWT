@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class FooterTyping extends JPanel {
-    private String timerString = "00:00";
+    private String timerString = "00:00:00";
     private int ppm, wpm;
     private boolean isStart;
     private GridBagConstraints gbc;
@@ -103,14 +103,15 @@ public class FooterTyping extends JPanel {
         repaint();
     }
 
-    public void setTimerString(String timerString) {
-        Cronometer.getInstance().start();
+    public void setTimerString() {
+        //Cronometer.getInstance().start();
+        Cronometer.getInstance().pauseTime();
         Thread thread = new Thread(() -> {
             while (true) {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
-                    System.out.println("Error en el hilo del cronometro");
+                    System.err.println("Error en el hilo del cronometro");
                 }
                 this.timerString = Cronometer.getInstance().getTime();
                 repaint();

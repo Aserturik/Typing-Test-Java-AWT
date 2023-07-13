@@ -103,7 +103,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     }
 
     private void timer() {
-        view.getTypingTestPanel().getFooterTyping().setTimerString(Cronometer.getInstance().getTime());
+        System.out.println("Timer");
     }
 
     public void openChallenge(int indexTest) {
@@ -113,7 +113,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
         view.getTypingTestPanel().getTittleTyping().setTitle(model.getTest(indexTest).getNameTest());
         view.getTypingTestPanel().getBodyTyping().setText(model.getTest(indexTest).getContentTest());
         view.getTypingTestPanel().getBodyTyping().setColorListDefault();
-        view.getTypingTestPanel().getFooterTyping().setTimerString(properties.getProperty("timeString"));
+        view.getTypingTestPanel().getFooterTyping().setTimerString();
 
         view.showPanelLessons();
     }
