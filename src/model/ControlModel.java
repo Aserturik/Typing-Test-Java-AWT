@@ -15,15 +15,9 @@ public class ControlModel implements Contract.Model {
     private int charsTyped;
 
     public ControlModel() {
-        persistenceData = new PersistenceData("ES");
+        persistenceData = new PersistenceData();
         persistenceConfig = new PersistenceConfig();
     }
-    
-    public ControlModel(String path) {
-        persistenceData = new PersistenceData(path);
-        persistenceConfig = new PersistenceConfig();
-    }
-
     
     public PersistenceData getPersistenceData() {
         return persistenceData;

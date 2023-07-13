@@ -17,10 +17,9 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 	private Properties properties;
 	private Contract.Model model;
 	private Contract.View view;
-	private String path = "ES";
 
 	public void run() {
-		controlModel = new ControlModel(path);
+		controlModel = new ControlModel();
 		properties = controlModel.getPersistenceData().getProperties();
 		keyTyped = new ArrayList<String>();
 	}
