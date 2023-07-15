@@ -16,9 +16,11 @@ public class ManagerGeneral {
     public void createMVP() {
         presenter = new Presenter();
         ActionListener listener = presenter.getListener();
+        System.out.println("1");
         model = new ControlModel();
+        System.out.println("2");
         view = new MyFrame(listener, model.getPersistenceData().getProperties());
-
+        System.out.println(model.getPersistenceData().getProperties());
 
         presenter.setModel(model);
         presenter.setView(view);

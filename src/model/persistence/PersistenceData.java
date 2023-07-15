@@ -13,82 +13,96 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 public class PersistenceData {
-    private ArrayList<TestWords> testWords;
-    private TestWords test1;
-    private Properties properties;
-    private PersistenceRecords records;
+	private ArrayList<TestWords> testWords;
+	private TestWords test1;
+	private Properties properties;
+	private PersistenceRecords records;
+	private String path;
 
-    public PersistenceData(String path) {
-        testWords = new ArrayList<TestWords>();
-        loadProperties(path);
-        loadAllTest();
-        loadRecords();
-    }
+	public PersistenceData() {
+		testWords = new ArrayList<TestWords>();
+        path= new String();
+		loadProperties();
+		loadAllTest();
+		loadRecords();
+	}
 
-    public void loadProperties(String path){
+	public void loadProperties() {
         properties = new Properties();
         try {
-        	switch (path) {
+        	switch (this.getPath()) {
 			case "ES":
 				properties.load(new FileReader("data/properties/dataES.properties"));
+				System.out.println("ES");
 				break;
 			case "EN":
 				properties.load(new FileReader("data/properties/dataEN.properties"));
+				System.out.println("EN");
 				break;
 			default:
+				properties.load(new FileReader("data/properties/dataES.properties"));
+				System.out.println("D");
 				break;
 			}
             
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
+	}
 
-    public Properties getProperties(){
-        return properties;
-    }
+	public String getPath() {
+		return path;
+	}
 
-    public void loadAllTest(){
-        testWords.add(newTest("firstText"));
-        testWords.add(newTest("secondText"));
-        testWords.add(newTest("thirdText"));
-        testWords.add(newTest("fourthText"));
-    }
+	public void setPath(String path) {
+		this.path = path;
+	}
 
-    public TestWords newTest(String nameTest){
-        try {
-            JsonReader reader = new Gson().newJsonReader(new FileReader("data/json/typingTest/"+nameTest+".json"));
-            test1 = new Gson().fromJson(reader, TestWords.class);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return test1;
-    }
+	public Properties getProperties() {
+		return properties;
+	}
 
-    public void loadRecords(){
-        try {
-            JsonReader reader = new Gson().newJsonReader(new FileReader("data/json/typingTest/records.json"));
-            records = new Gson().fromJson(reader, PersistenceRecords.class);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+	public void loadAllTest() {
+		testWords.add(newTest("firstText"));
+		testWords.add(newTest("secondText"));
+		testWords.add(newTest("thirdText"));
+		testWords.add(newTest("fourthText"));
+	}
 
-    public TestWords getTest(int index){
-        return testWords.get(index);
-    }
+	public TestWords newTest(String nameTest) {
+		try {
+			JsonReader reader = new Gson().newJsonReader(new FileReader("data/json/typingTest/" + nameTest + ".json"));
+			test1 = new Gson().fromJson(reader, TestWords.class);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return test1;
+	}
 
-    public void saveProgress(int index){
-        testWords.get(index).saveProgress(records.getRecord(index));
-    }
+	public void loadRecords() {
+		try {
+			JsonReader reader = new Gson().newJsonReader(new FileReader("data/json/typingTest/records.json"));
+			records = new Gson().fromJson(reader, PersistenceRecords.class);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 
-    public void saveRecords() {
-        try {
-            FileWriter writer = new FileWriter("data/json/typingTest/records.json");
-            new Gson().toJson(records, writer);
-            writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+	public TestWords getTest(int index) {
+		return testWords.get(index);
+	}
+
+	public void saveProgress(int index) {
+		testWords.get(index).saveProgress(records.getRecord(index));
+	}
+
+	public void saveRecords() {
+		try {
+			FileWriter writer = new FileWriter("data/json/typingTest/records.json");
+			new Gson().toJson(records, writer);
+			writer.close();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

@@ -1,6 +1,7 @@
 package presenter;
 
 import model.ControlModel;
+import util.Constants;
 
 import java.awt.event.*;
 import java.io.FileNotFoundException;
@@ -141,11 +142,16 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 	public void change() {
 		String language = view.getPrincipalPanel().languageChange();
 		switch (language) {
-		case "GO BACK TO MENU":
-		
+		case "CHANGE TO SPANISH":
+			controlModel.getPersistenceData().setPath("ES");
+			controlModel.getPersistenceData().loadProperties();
+			properties=controlModel.getPersistenceData().getProperties();
+			view.setProperties(properties);
 			break;
 		case "CAMBIAR A INGLES":
-		
+			controlModel.getPersistenceData().setPath("EN");
+			controlModel.getPersistenceData().loadProperties();
+			Constants.setProperties(controlModel.getPersistenceData().getProperties());
 			break;
 		default:
 			break;

@@ -25,7 +25,11 @@ public class MyFrame extends JFrame implements Contract.View {
         this.setResizable(false);
         setVisible(true);
     }
-
+    @Override
+    public void setProperties(Properties properties) {
+		Constants.setProperties(properties);
+	}
+    
     public void initComponents(ActionListener listener) {
         //controlTime = new ControlTime(10, listener);
         // en vez del control time debe ir el timer
