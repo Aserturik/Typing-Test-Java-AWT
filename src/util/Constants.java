@@ -23,6 +23,8 @@ public class Constants {
     public static final String BACK_BUTTON_TITLE = "BACK_BUTTON_TITLE";
     public static final String PAUSE = "PAUSE";
     public static final String RESTART = "RESTART";
+    
+    
     public static void setProperties(Properties properties) {
         Constants.properties = properties;
     }

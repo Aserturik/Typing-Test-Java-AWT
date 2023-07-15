@@ -17,18 +17,29 @@ public class PersistenceData {
     private TestWords test1;
     private Properties properties;
     private PersistenceRecords records;
+    private String path;
 
-    public PersistenceData(String path) {
+    public PersistenceData() {
         testWords = new ArrayList<TestWords>();
-        loadProperties(path);
+        loadProperties();
         loadAllTest();
         loadRecords();
     }
+    
+    public void setPath(String path) {
+		this.path = "Ep";
+	}
+    
+    public String getPath() {
+		return path;
+	}
 
-    public void loadProperties(String path){
+    public void loadProperties(){
         properties = new Properties();
+        setPath(path);
+        getPath();
         try {
-        	switch (path) {
+        	switch (this.path) {
 			case "ES":
 				properties.load(new FileReader("data/properties/dataES.properties"));
 				break;
@@ -36,6 +47,7 @@ public class PersistenceData {
 				properties.load(new FileReader("data/properties/dataEN.properties"));
 				break;
 			default:
+				properties.load(new FileReader("data/properties/dataES.properties"));
 				break;
 			}
             

@@ -17,6 +17,10 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 	private Properties properties;
 	private Contract.Model model;
 	private Contract.View view;
+	private String path;
+	
+	public Presenter() {
+	}
 
 	public void run() {
 		controlModel = new ControlModel();

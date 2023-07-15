@@ -19,6 +19,8 @@ public class ControlModel implements Contract.Model {
         persistenceConfig = new PersistenceConfig();
     }
     
+  
+    
     public PersistenceData getPersistenceData() {
         return persistenceData;
     }
@@ -52,4 +54,8 @@ public class ControlModel implements Contract.Model {
     public int getWPM(String time, int indexTest) {
         return persistenceData.getTest(indexTest).getWPM(time);
     }
+
+
+
+	
 }
