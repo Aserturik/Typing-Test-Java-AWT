@@ -24,7 +24,6 @@ public class ManagerGeneral {
         presenter.setView(view);
         view.setPresenter(presenter);
         model.setPresenter(presenter);
-        
     }
 
     public void run() {

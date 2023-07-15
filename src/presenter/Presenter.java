@@ -17,10 +17,6 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 	private Properties properties;
 	private Contract.Model model;
 	private Contract.View view;
-	private String path;
-	
-	public Presenter() {
-	}
 
 	public void run() {
 		controlModel = new ControlModel();
@@ -143,25 +139,17 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 	}
 
 	public void change() {
-//		String language = view.getPrincipalPanel().languageChange();
-//		switch (language) {
-//		case "GO BACK TO MENU":
-//			path = "ES";
-//			run();
-//			setModel(controlModel);
-//			setView(view);
-//			System.out.println("AVISO A ESPAÑOL");
-//			break;
-//		case "CAMBIAR A INGLES":
-//			path = "EN";
-//			run();
-//			setModel(controlModel);
-//			setView(view);
-//			System.out.println("AVISO A INGLES");
-//			break;
-//		default:
-//			break;
-//		}
+		String language = view.getPrincipalPanel().languageChange();
+		switch (language) {
+		case "GO BACK TO MENU":
+		
+			break;
+		case "CAMBIAR A INGLES":
+		
+			break;
+		default:
+			break;
+		}
 	}
 
 	// Eventos Globales

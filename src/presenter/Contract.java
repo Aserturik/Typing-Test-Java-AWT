@@ -24,7 +24,6 @@ public interface Contract {
         void setPresenter(Presenter presenter);
 
         void showPanelPrincipal();
-        void languageChange();
 
         void showLessons();
 

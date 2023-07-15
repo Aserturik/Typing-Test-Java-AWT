@@ -15,11 +15,9 @@ public class ControlModel implements Contract.Model {
     private int charsTyped;
 
     public ControlModel() {
-        persistenceData = new PersistenceData();
+        persistenceData = new PersistenceData("ES");
         persistenceConfig = new PersistenceConfig();
     }
-    
-  
     
     public PersistenceData getPersistenceData() {
         return persistenceData;
@@ -54,8 +52,4 @@ public class ControlModel implements Contract.Model {
     public int getWPM(String time, int indexTest) {
         return persistenceData.getTest(indexTest).getWPM(time);
     }
-
-
-
-	
 }
