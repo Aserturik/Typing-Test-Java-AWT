@@ -17,7 +17,8 @@ public class MyFrame extends JFrame implements Contract.View {
     private Contract.Presenter presenter;
     
     public MyFrame(ActionListener actionListener, Properties properties) {
-        Constants.setProperties(properties);
+    	setProperties(properties);
+        System.out.println(Constants.getProperty("font"));
         this.setTitle(Constants.getProperty("titleFrame"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 635);
@@ -25,9 +26,9 @@ public class MyFrame extends JFrame implements Contract.View {
         this.setResizable(false);
         setVisible(true);
     }
-    @Override
+    
     public void setProperties(Properties properties) {
-		Constants.setProperties(properties);
+    	Constants.setProperties(properties);
 	}
     
     public void initComponents(ActionListener listener) {

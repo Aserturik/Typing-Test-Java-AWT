@@ -119,6 +119,10 @@ public class PrincipalPanel extends JPanel {
         configPanel.setFontSizeComboBox(sizes);
     }
     
+    public ConfigPanel getConfigPanel() {
+		return configPanel;
+	}
+    
     public String languageChange() {
 		return configPanel.languageChange();
 	}

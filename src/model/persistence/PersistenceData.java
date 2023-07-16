@@ -40,7 +40,7 @@ public class PersistenceData {
 				System.out.println("EN");
 				break;
 			default:
-				properties.load(new FileReader("data/properties/dataES.properties"));
+				properties.load(new FileReader("data/properties/dataEN.properties"));
 				System.out.println("D");
 				break;
 			}

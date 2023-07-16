@@ -8,7 +8,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class TittleTyping extends JPanel {
-    private PrincipalButton backMenuButton;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private PrincipalButton backMenuButton;
     private GridBagConstraints gbc;
     private String title;
 

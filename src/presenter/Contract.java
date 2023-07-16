@@ -10,44 +10,48 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 public interface Contract {
-    public interface Presenter {
-        void run();
+	public interface Presenter {
+		void run();
 
-        ActionListener getListener();
+		ActionListener getListener();
 
-        void setModel(Model model);
+		void setModel(Model model);
 
-        void setView(View view);
-    }
+		void setView(View view);
+	}
 
-    public interface View {
+	public interface View {
 
-        void setPresenter(Presenter presenter);
-        void setProperties(Properties properties);
+		void setPresenter(Presenter presenter);
 
-        void showPanelPrincipal();
+		void setProperties(Properties properties);
 
-        void showLessons();
+		void showPanelPrincipal();
 
-        void pauseTimer();
+		void showLessons();
 
-        void reanudeTimer();
+		void pauseTimer();
 
-        void restart();
+		void reanudeTimer();
 
-        TypingTestPanel getTypingTestPanel();
+		void restart();
+		
 
-        PrincipalPanel getPrincipalPanel();
+		TypingTestPanel getTypingTestPanel();
 
-        void setColorList(ArrayList<Color> colorList);
-        void showPanelLessons();
-        void setPPM(int ppm);
-    }
+		PrincipalPanel getPrincipalPanel();
 
-    public interface Model {
+		void setColorList(ArrayList<Color> colorList);
 
-        PersistenceData getPersistenceData();
+		void showPanelLessons();
 
-        void setPresenter(Presenter presenter);
-    }
+		void setPPM(int ppm);
+	}
+
+	public interface Model {
+
+		PersistenceData getPersistenceData();
+
+		void setPresenter(Presenter presenter);
+	}
 }

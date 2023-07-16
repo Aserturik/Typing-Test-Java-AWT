@@ -145,13 +145,27 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 		case "CHANGE TO SPANISH":
 			controlModel.getPersistenceData().setPath("ES");
 			controlModel.getPersistenceData().loadProperties();
-			properties=controlModel.getPersistenceData().getProperties();
-			view.setProperties(properties);
+			Constants.setProperties(controlModel.getPersistenceData().getProperties());
+			view.setProperties(controlModel.getPersistenceData().getProperties());
+			this.properties=controlModel.getPersistenceData().getProperties();
+			run();
+			view.getPrincipalPanel().getConfigPanel().setChange();
+			System.out.println(controlModel.getPersistenceData().getProperties());
+			System.out.println(properties);
+			
+			
 			break;
 		case "CAMBIAR A INGLES":
 			controlModel.getPersistenceData().setPath("EN");
 			controlModel.getPersistenceData().loadProperties();
 			Constants.setProperties(controlModel.getPersistenceData().getProperties());
+			this.properties=controlModel.getPersistenceData().getProperties();
+			run();
+			view.getPrincipalPanel().getConfigPanel().setChange();
+			System.out.println(controlModel.getPersistenceData().getProperties());
+			System.out.println(properties);
+			
+			
 			break;
 		default:
 			break;
