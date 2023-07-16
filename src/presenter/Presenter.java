@@ -148,11 +148,12 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 			Constants.setProperties(controlModel.getPersistenceData().getProperties());
 			view.setProperties(controlModel.getPersistenceData().getProperties());
 			this.properties=controlModel.getPersistenceData().getProperties();
-			run();
 			view.getPrincipalPanel().getConfigPanel().setChange();
 			System.out.println(controlModel.getPersistenceData().getProperties());
 			System.out.println(properties);
-			
+			Contract.View vi1 = view;
+			setView(vi1);
+			ManagerGeneral m = new ManagerGeneral();
 			
 			break;
 		case "CAMBIAR A INGLES":
@@ -160,11 +161,10 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 			controlModel.getPersistenceData().loadProperties();
 			Constants.setProperties(controlModel.getPersistenceData().getProperties());
 			this.properties=controlModel.getPersistenceData().getProperties();
-			run();
 			view.getPrincipalPanel().getConfigPanel().setChange();
 			System.out.println(controlModel.getPersistenceData().getProperties());
 			System.out.println(properties);
-			
+			setView(view);
 			
 			break;
 		default:

@@ -32,4 +32,16 @@ public class ManagerGeneral {
         createMVP();
         presenter.run();
     }
+    
+    public void setView(Contract.View view) {
+		this.view = view;
+	}
+    
+    public void setModel(Contract.Model model) {
+		this.model = model;
+	}
+    
+    public void setPresenter(Contract.Presenter presenter) {
+		this.presenter = presenter;
+	}
 }
