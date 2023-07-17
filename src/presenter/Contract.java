@@ -3,6 +3,7 @@ package presenter;
 import model.TestWords;
 import model.persistence.PersistenceConfig;
 import model.persistence.PersistenceData;
+import model.time.Cronometer;
 import view.panels.PrincipalPanel;
 import view.typing.TypingTestPanel;
 
@@ -54,5 +55,7 @@ public interface Contract {
         void setPresenter(Presenter presenter);
         int getTimer();
         void startCronometer();
+        String getTimerString();
+        Cronometer getCronometer();
     }
 }

@@ -103,21 +103,7 @@ public class FooterTyping extends JPanel {
         repaint();
     }
 
-    public void setTimerString() {
-        //Cronometer.getInstance().start();
-        Cronometer.getInstance().pauseTime();
-        Thread thread = new Thread(() -> {
-            while (true) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    System.err.println("Error en el hilo del cronometro");
-                }
-                this.timerString = Cronometer.getInstance().getTime();
-                repaint();
-            }
-        });
-
-        thread.start();
+    public void setTimerString(String timmerString) {
+        this.timerString = timmerString;
     }
 }

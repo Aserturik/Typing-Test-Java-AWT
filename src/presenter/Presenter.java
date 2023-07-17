@@ -11,9 +11,11 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     private Properties properties;
     private Contract.Model model;
     private Contract.View view;
+    private String timerString;
 
     public void run() {
         properties = model.getPersistenceData().getProperties();
+        this.timerString = properties.getProperty("timeString");
         keyTyped = new ArrayList<String>();
     }
 
@@ -113,7 +115,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
         view.getTypingTestPanel().getTittleTyping().setTitle(model.getTest(indexTest).getNameTest());
         view.getTypingTestPanel().getBodyTyping().setText(model.getTest(indexTest).getContentTest());
         view.getTypingTestPanel().getBodyTyping().setColorListDefault();
-        view.getTypingTestPanel().getFooterTyping().setTimerString();
+        view.getTypingTestPanel().getFooterTyping().setTimerString(this.timerString);
 
         view.showPanelLessons();
     }
@@ -160,7 +162,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
     public void isPause() {
         if (model.getTest(indexTest).isPause()) {
-            Cronometer.getInstance().start();
+            //model.reanudeCronometer();
             model.startCronometer();
             System.out.println("isPause");
         }
@@ -168,9 +170,22 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
     public void isStartTest() {
         if (keyTyped.size() == 1) {
-            //new Thread(() -> view.getControlTime().start()).start();
+            model.getCronometer().start();
+            Thread thread = new Thread(() -> {
+                while (true) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        System.err.println("Error en el hilo del cronometro");
+                    }
+                    view.getTypingTestPanel().getFooterTyping().setTimerString(model.getTimerString());
+                }
+            });
+
+            thread.start();
+
             model.startCronometer();
-            System.out.println("isStartTest");
+            view.getTypingTestPanel().getFooterTyping().setTimerString(model.getTimerString());
         }
     }
 

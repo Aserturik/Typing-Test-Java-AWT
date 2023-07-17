@@ -38,6 +38,16 @@ public class ControlModel implements Contract.Model {
         Cronometer.getInstance().start();
     }
 
+    @Override
+    public String getTimerString() {
+        return Cronometer.getInstance().getTime();
+    }
+
+    @Override
+    public Cronometer getCronometer() {
+        return Cronometer.getInstance();
+    }
+
     public TestWords getTest(int index) {
         return persistenceData.getTest(index);
     }
