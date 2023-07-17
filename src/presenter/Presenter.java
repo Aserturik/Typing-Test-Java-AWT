@@ -1,6 +1,7 @@
 package presenter;
 import model.time.Cronometer;
 
+import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -32,6 +33,11 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     @Override
     public void setView(Contract.View view) {
         this.view = view;
+    }
+
+    @Override
+    public ArrayList<Color> getListDefaultColor() {
+        return model.getListDefaultColor(indexTest);
     }
 
     @Override

@@ -20,6 +20,7 @@ public interface Contract {
         void setModel(Model model);
 
         void setView(View view);
+        ArrayList<Color> getListDefaultColor();
     }
 
     public interface View {
@@ -40,6 +41,7 @@ public interface Contract {
 
         PrincipalPanel getPrincipalPanel();
 
+
         void setColorList(ArrayList<Color> colorList);
         void showPanelLessons();
         void setPPM(int ppm);
@@ -53,6 +55,7 @@ public interface Contract {
         ArrayList<Color> getColorList(int indexTest, int indexChar, char charPressed);
         int getPPM();
         void setPresenter(Presenter presenter);
+        ArrayList<Color> getListDefaultColor(int indexTest);
         int getTimer();
         void startCronometer();
         String getTimerString();
