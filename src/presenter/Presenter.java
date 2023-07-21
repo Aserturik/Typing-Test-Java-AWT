@@ -21,7 +21,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
 	public void run() {
 		controlModel = new ControlModel();
-//		properties = controlModel.getPersistenceData().getProperties();
+		properties = controlModel.getPersistenceData().getProperties();
 		keyTyped = new ArrayList<String>();
 	}
 
@@ -143,30 +143,25 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 		String language = view.getPrincipalPanel().languageChange();
 		switch (language) {
 		case "CHANGE TO SPANISH":
-//			controlModel.languageChange("ES");
-			controlModel.getPersistenceData().setPath("ES");
-			controlModel.getPersistenceData().loadProperties();
-//			this.properties=controlModel.getPersistenceData().getProperties();
-			view.getPrincipalPanel().getConfigPanel().setChange();
-			System.out.println(controlModel.getPersistenceData().getProperties());
 			System.out.println(properties);
-			
-//			Contract.View vi1 = view;
-//			setView(vi1);
-//			ManagerGeneral m = new ManagerGeneral();
-//			m.run();
-			
+			controlModel.languageChange("ES");
+//			controlModel.getPersistenceData().setPath("ES");
+//			controlModel.getPersistenceData().loadProperties();
+			this.properties=controlModel.getPersistenceData().getProperties();
+			view.getPrincipalPanel().getConfigPanel().setChange();//PILAS QUE ESTO HAY QUE BORRARLO
+			System.out.println("ES: "+ controlModel.getPersistenceData().getProperties());
+			System.out.println("ESp: "+properties);
+			view.getPrincipalPanel().test1(this);
+
 			break;
 		case "CAMBIAR A INGLES":
-//			controlModel.languageChange("ES");
-			
-//			this.properties=controlModel.getPersistenceData().getProperties();
-			controlModel.getPersistenceData().setPath("EN");
-			controlModel.getPersistenceData().loadProperties();
+			controlModel.languageChange("EN");
+			this.properties=controlModel.getPersistenceData().getProperties();
+//			controlModel.getPersistenceData().setPath("EN");
+//			controlModel.getPersistenceData().loadProperties();
 			view.getPrincipalPanel().getConfigPanel().setChange();
-			System.out.println(controlModel.getPersistenceData().getProperties());
-			System.out.println(properties);
-			System.out.println();
+			System.out.println("EN: "+controlModel.getPersistenceData().getProperties());
+			System.out.println("ENp: "+properties);
 			
 			break;
 		default:

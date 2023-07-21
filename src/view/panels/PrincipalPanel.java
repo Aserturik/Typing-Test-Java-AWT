@@ -126,6 +126,10 @@ public class PrincipalPanel extends JPanel {
     public String languageChange() {
 		return configPanel.languageChange();
 	}
+    
+    public void test1(ActionListener listener) {
+    	configPanel.test1(listener);
+    }
 
     public int getFontSize() {
         return configPanel.getFontSize();

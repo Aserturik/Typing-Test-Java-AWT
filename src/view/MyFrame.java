@@ -16,8 +16,8 @@ public class MyFrame extends JFrame implements Contract.View {
     private TypingTestPanel typingTestPanel;
     private Contract.Presenter presenter;
     
-    public MyFrame(ActionListener actionListener, Properties properties) {
-    	Constants.setProperties(properties);
+    public MyFrame(ActionListener actionListener) {
+//    	Constants.setProperties(properties);
         System.out.println(Constants.getProperty("font"));
         this.setTitle(Constants.getProperty("titleFrame"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,7 +27,16 @@ public class MyFrame extends JFrame implements Contract.View {
         setVisible(true);
     }
     
- 
+//    public MyFrame(ActionListener actionListener, Properties properties) {
+//    	Constants.setProperties(properties);
+//        System.out.println(Constants.getProperty("font"));
+//        this.setTitle(Constants.getProperty("titleFrame"));
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        setSize(1000, 635);
+//        initComponents(actionListener);
+//        this.setResizable(false);
+//        setVisible(true);
+//    }
     
     public void initComponents(ActionListener listener) {
         //controlTime = new ControlTime(10, listener);

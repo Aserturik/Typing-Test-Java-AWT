@@ -7,9 +7,11 @@ import model.TestWords;
 import util.Constants;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -19,7 +21,6 @@ public class PersistenceData {
 	private Properties properties;
 	private PersistenceRecords records;
 	private String path;
-	private Properties startPath;
 
 	public PersistenceData() {
 		testWords = new ArrayList<TestWords>();
@@ -40,13 +41,32 @@ public class PersistenceData {
 				properties.load(new FileReader("data/properties/dataEN.properties"));
 				break;
 			default:
-				properties.load(new FileReader("data/properties/dataEN.properties"));
+				properties.load(new FileReader(loadLanguage()));
 				break;
 			}
         	Constants.setProperties(properties);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+	}
+	//Este es el que va a leer el path que se guarda. 
+	public String loadLanguage(){
+		Properties path = new Properties();
+		try {
+			path.load(new FileReader("data/properties/path.properties"));	
+		} catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+		return path.getProperty("starterLanguage");
+	}
+	
+	public void writeNewPath() {
+		Properties path = new Properties();
+		try (OutputStream output = new FileOutputStream("data/properties/path.properties")){
+			path.setProperty("starterLanguage", getPath());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	public String getPath() {
