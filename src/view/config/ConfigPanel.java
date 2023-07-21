@@ -40,6 +40,7 @@ public class ConfigPanel extends RightPanel {
         sizeFontComboBox(new String[]{});
         languageChange(listener);
         backMenuButton(listener);
+        
     }
 
     public void initComponents(Graphics2D gg) {
@@ -101,7 +102,7 @@ public class ConfigPanel extends RightPanel {
         gg.setColor(Color.WHITE);
         gg.setFont(font1);
         gg.drawString(Constants.getProperty("size"), 170, 375);
-        repaint();
+//        repaint();
     }
     
     public void languageChange(ActionListener listener) {
@@ -110,7 +111,6 @@ public class ConfigPanel extends RightPanel {
 		languageChange.setActionCommand(Constants.LANGUAGE_CHANGE);
 		languageChange.addActionListener(listener);
 		this.add(languageChange, gbc);
-
 	}
     
     public void setChange() {
@@ -120,6 +120,7 @@ public class ConfigPanel extends RightPanel {
     public void backMenuButton(ActionListener listener){
         gbc = super.gbcPrincipalButton(gbc,0,10);
         backMenuButton = new PrincipalButton(Constants.getProperty("backMenu"));
+        
         backMenuButton.setActionCommand(Constants.BACK_MENU_CONFIG);
         backMenuButton.addActionListener(listener);
         this.add(backMenuButton, gbc);

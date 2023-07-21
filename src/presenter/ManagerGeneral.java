@@ -16,11 +16,8 @@ public class ManagerGeneral {
     public void createMVP() {
         presenter = new Presenter();
         ActionListener listener = presenter.getListener();
-        System.out.println("1");
         model = new ControlModel();
-        System.out.println("2");
         view = new MyFrame(listener, model.getPersistenceData().getProperties());
-        System.out.println(model.getPersistenceData().getProperties());
 
         presenter.setModel(model);
         presenter.setView(view);
@@ -28,20 +25,16 @@ public class ManagerGeneral {
         model.setPresenter(presenter);
     }
 
-    public void run() {
-        createMVP();
-        presenter.run();
-    }
+    public Contract.View getView() {
+		return view;
+	}
     
     public void setView(Contract.View view) {
 		this.view = view;
 	}
     
-    public void setModel(Contract.Model model) {
-		this.model = model;
-	}
-    
-    public void setPresenter(Contract.Presenter presenter) {
-		this.presenter = presenter;
-	}
+    public void run() {
+        createMVP();
+        presenter.run();
+    }
 }

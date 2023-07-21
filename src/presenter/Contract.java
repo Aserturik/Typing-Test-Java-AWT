@@ -24,8 +24,6 @@ public interface Contract {
 
 		void setPresenter(Presenter presenter);
 
-		void setProperties(Properties properties);
-
 		void showPanelPrincipal();
 
 		void showLessons();

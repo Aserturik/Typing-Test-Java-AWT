@@ -22,6 +22,11 @@ public class ControlModel implements Contract.Model {
     public PersistenceData getPersistenceData() {
         return persistenceData;
     }
+    
+    public void languageChange(String path) {
+    	getPersistenceData().setPath(path);
+		getPersistenceData().loadProperties();
+	}
 
     @Override
     public void setPresenter(Contract.Presenter presenter) {

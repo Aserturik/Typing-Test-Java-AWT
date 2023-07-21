@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import model.PersistenceRecords;
 import model.TestWords;
+import util.Constants;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,6 +19,7 @@ public class PersistenceData {
 	private Properties properties;
 	private PersistenceRecords records;
 	private String path;
+	private Properties startPath;
 
 	public PersistenceData() {
 		testWords = new ArrayList<TestWords>();
@@ -33,18 +35,15 @@ public class PersistenceData {
         	switch (this.getPath()) {
 			case "ES":
 				properties.load(new FileReader("data/properties/dataES.properties"));
-				System.out.println("ES");
 				break;
 			case "EN":
 				properties.load(new FileReader("data/properties/dataEN.properties"));
-				System.out.println("EN");
 				break;
 			default:
 				properties.load(new FileReader("data/properties/dataEN.properties"));
-				System.out.println("D");
 				break;
 			}
-            
+        	Constants.setProperties(properties);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -60,6 +59,10 @@ public class PersistenceData {
 
 	public Properties getProperties() {
 		return properties;
+	}
+	
+	public void setProperties(Properties properties) {
+		this.properties = properties;
 	}
 
 	public void loadAllTest() {

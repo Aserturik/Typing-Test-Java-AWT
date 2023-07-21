@@ -21,7 +21,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
 	public void run() {
 		controlModel = new ControlModel();
-		properties = controlModel.getPersistenceData().getProperties();
+//		properties = controlModel.getPersistenceData().getProperties();
 		keyTyped = new ArrayList<String>();
 	}
 
@@ -143,28 +143,30 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 		String language = view.getPrincipalPanel().languageChange();
 		switch (language) {
 		case "CHANGE TO SPANISH":
+//			controlModel.languageChange("ES");
 			controlModel.getPersistenceData().setPath("ES");
 			controlModel.getPersistenceData().loadProperties();
-			Constants.setProperties(controlModel.getPersistenceData().getProperties());
-			view.setProperties(controlModel.getPersistenceData().getProperties());
-			this.properties=controlModel.getPersistenceData().getProperties();
+//			this.properties=controlModel.getPersistenceData().getProperties();
 			view.getPrincipalPanel().getConfigPanel().setChange();
 			System.out.println(controlModel.getPersistenceData().getProperties());
 			System.out.println(properties);
-			Contract.View vi1 = view;
-			setView(vi1);
-			ManagerGeneral m = new ManagerGeneral();
+			
+//			Contract.View vi1 = view;
+//			setView(vi1);
+//			ManagerGeneral m = new ManagerGeneral();
+//			m.run();
 			
 			break;
 		case "CAMBIAR A INGLES":
+//			controlModel.languageChange("ES");
+			
+//			this.properties=controlModel.getPersistenceData().getProperties();
 			controlModel.getPersistenceData().setPath("EN");
 			controlModel.getPersistenceData().loadProperties();
-			Constants.setProperties(controlModel.getPersistenceData().getProperties());
-			this.properties=controlModel.getPersistenceData().getProperties();
 			view.getPrincipalPanel().getConfigPanel().setChange();
 			System.out.println(controlModel.getPersistenceData().getProperties());
 			System.out.println(properties);
-			setView(view);
+			System.out.println();
 			
 			break;
 		default:
