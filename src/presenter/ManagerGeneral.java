@@ -25,14 +25,6 @@ public class ManagerGeneral {
         model.setPresenter(presenter);
     }
 
-    public Contract.View getView() {
-		return view;
-	}
-    
-    public void setView(Contract.View view) {
-		this.view = view;
-	}
-    
     public void run() {
         createMVP();
         presenter.run();
