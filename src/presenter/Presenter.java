@@ -151,6 +151,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 			view.closeApp();
 			managerGeneral.run();
 			break;
+			
 		case "CAMBIAR A INGLES":
 			controlModel.languageChange("EN");
 			view.closeApp();
