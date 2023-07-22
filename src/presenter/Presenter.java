@@ -1,17 +1,9 @@
 package presenter;
 
 import model.ControlModel;
-import sun.applet.Main;
-import util.Constants;
-
 import java.awt.event.*;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
-
-import javax.swing.JOptionPane;
 
 public class Presenter implements ActionListener, KeyListener, Contract.Presenter {
 
