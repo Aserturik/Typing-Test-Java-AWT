@@ -112,7 +112,7 @@ public class ConfigPanel extends RightPanel {
 		languageChange.addActionListener(listener);
 		this.add(languageChange, gbc);
 	}
-
+    
     public void backMenuButton(ActionListener listener){
         gbc = super.gbcPrincipalButton(gbc,0,10);
         backMenuButton = new PrincipalButton(Constants.getProperty("backMenu"));
