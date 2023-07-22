@@ -13,6 +13,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     private Contract.Model model;
     private Contract.View view;
     private String timerString;
+    private boolean isRunning;
 
     public void run() {
         properties = model.getPersistenceData().getProperties();
@@ -100,11 +101,13 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
     private void restart() {
         view.restart();
+        model.getCronometer().resetTime();
         if (model.getTest(indexTest).isPause()) {
             model.getTest(indexTest).pause();
             view.getTypingTestPanel().getFooterTyping().getPauseButton().setText(properties.getProperty("pauseButton"));
         } else {
             //view.getControlTime().stop();
+            isRunning = false;
             Cronometer.getInstance().pauseTime();
         }
         keyTyped.clear();
@@ -156,6 +159,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
         keyTyped.add(String.valueOf(keyEvent.getKeyChar()));
         pPM();
         wPM();
+
         if (!isEndTest()) {
             view.setColorList(model.getColorList(indexTest, keyTyped.size() - 1, keyEvent.getKeyChar()));
             if (keyTyped.size() == model.getTest(indexTest).getContentTest().length()) {
@@ -163,6 +167,19 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
                 //view.getControlTime().stop();
                 saveProgress();
             }
+        }
+    }
+
+    private void runThread(){
+        if (keyTyped.size() >= 1){
+            isRunning = true;
+            Thread thread = new Thread(() -> {
+                while (isRunning) {
+                    view.getTypingTestPanel().getFooterTyping().setTimerString(model.getTimerString());
+                }
+            });
+
+            thread.start();
         }
     }
 
@@ -176,20 +193,8 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
     public void isStartTest() {
         if (keyTyped.size() == 1) {
+            runThread();
             model.getCronometer().start();
-            Thread thread = new Thread(() -> {
-                while (true) {
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        System.err.println("Error en el hilo del cronometro");
-                    }
-                    view.getTypingTestPanel().getFooterTyping().setTimerString(model.getTimerString());
-                }
-            });
-
-            thread.start();
-
             model.startCronometer();
             view.getTypingTestPanel().getFooterTyping().setTimerString(model.getTimerString());
         }
@@ -235,5 +240,13 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     @Override
     public void keyReleased(KeyEvent keyEvent) {
 
+    }
+
+    public void setRunning(boolean running) {
+        isRunning = running;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
     }
 }

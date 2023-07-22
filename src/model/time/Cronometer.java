@@ -41,5 +41,10 @@ public class Cronometer {
         int seconds = (int) ((time % 60000) / 1000);
         return seconds;
     }
+
+    public void resetTime() {
+        initialTime = 0;
+        pausedTime = 0;
+    }
 }
 
