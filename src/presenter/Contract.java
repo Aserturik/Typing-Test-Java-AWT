@@ -33,7 +33,6 @@ public interface Contract {
 		void reanudeTimer();
 
 		void restart();
-		
 
 		TypingTestPanel getTypingTestPanel();
 
@@ -44,7 +43,7 @@ public interface Contract {
 		void showPanelLessons();
 
 		void setPPM(int ppm);
-		
+
 		void closeApp();
 	}
 
