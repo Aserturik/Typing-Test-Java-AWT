@@ -1,6 +1,9 @@
 package presenter;
 
+import model.TestWords;
+import model.persistence.PersistenceConfig;
 import model.persistence.PersistenceData;
+import model.time.Cronometer;
 import view.panels.PrincipalPanel;
 import view.typing.TypingTestPanel;
 
@@ -17,8 +20,9 @@ public interface Contract {
 
 		void setModel(Model model);
 
-		void setView(View view);
-	}
+        void setView(View view);
+        ArrayList<Color> getListDefaultColor();
+    }
 
 	public interface View {
 
@@ -38,19 +42,25 @@ public interface Contract {
 
 		PrincipalPanel getPrincipalPanel();
 
-		void setColorList(ArrayList<Color> colorList);
 
-		void showPanelLessons();
-
-		void setPPM(int ppm);
-
-		void closeApp();
-	}
+        void setColorList(ArrayList<Color> colorList);
+        void showPanelLessons();
+        void setPPM(int ppm);
+        void closeApp();
+    }
 
 	public interface Model {
 
-		PersistenceData getPersistenceData();
-
-		void setPresenter(Presenter presenter);
-	}
+        PersistenceData getPersistenceData();
+        TestWords getTest(int index);
+        PersistenceConfig getPersistenceConfig();
+        ArrayList<Color> getColorList(int indexTest, int indexChar, char charPressed);
+        int getPPM();
+        void setPresenter(Presenter presenter);
+        ArrayList<Color> getListDefaultColor(int indexTest);
+        int getTimer();
+        void startCronometer();
+        String getTimerString();
+        Cronometer getCronometer();
+    }
 }

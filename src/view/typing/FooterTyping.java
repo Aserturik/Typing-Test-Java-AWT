@@ -1,5 +1,6 @@
 package view.typing;
 
+import model.time.Cronometer;
 import util.Constants;
 import view.buttons.TypingButton;
 
@@ -8,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class FooterTyping extends JPanel {
-    private String timerString;
+    private String timerString = "00:00:00";
     private int ppm, wpm;
     private boolean isStart;
     private GridBagConstraints gbc;
@@ -102,8 +103,7 @@ public class FooterTyping extends JPanel {
         repaint();
     }
 
-    public void setTimerString(String timerString) {
-        this.timerString = timerString;
-        repaint();
+    public void setTimerString(String timmerString) {
+        this.timerString = timmerString;
     }
 }

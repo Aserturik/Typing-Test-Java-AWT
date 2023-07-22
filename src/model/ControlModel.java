@@ -32,6 +32,26 @@ public class ControlModel implements Contract.Model {
         this.presenter = presenter;
     }
 
+    @Override
+    public int getTimer() {
+        return Cronometer.getInstance().getSeconds();
+    }
+
+    @Override
+    public void startCronometer() {
+        Cronometer.getInstance().start();
+    }
+
+    @Override
+    public String getTimerString() {
+        return Cronometer.getInstance().getTime();
+    }
+
+    @Override
+    public Cronometer getCronometer() {
+        return Cronometer.getInstance();
+    }
+
     public TestWords getTest(int index) {
         return persistenceData.getTest(index);
     }

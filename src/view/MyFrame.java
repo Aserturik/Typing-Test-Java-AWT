@@ -87,10 +87,8 @@ public class MyFrame extends JFrame implements Contract.View {
 
     @Override
     public void restart(){
-        //getControlTime().resetTime();
-        //getTypingTestPanel().getFooterTyping().setTimerString(properties.getProperty("timeString"));
         getTypingTestPanel().getBodyTyping().clearTextArea();
-        //setColorList(controlModel.getListDefaultColor(indexTest));
+        setColorList(presenter.getListDefaultColor());
         setPPM(0);
         setWPM(0);
     }

@@ -1,4 +1,7 @@
 package model.time;
+
+import model.ControlModel;
+
 public class Cronometer {
     private long initialTime;
     private long pausedTime;
@@ -27,15 +30,21 @@ public class Cronometer {
     }
     public String getTime() {
         long time = System.currentTimeMillis() - initialTime;
+        int hours = (int) (time / 3600000);
         int minutes = (int) (time / 60000);
         int seconds = (int) ((time % 60000) / 1000);
-        return String.format("%02d:%02d", minutes, seconds);
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 
     public int getSeconds() {
         long time = System.currentTimeMillis() - initialTime;
         int seconds = (int) ((time % 60000) / 1000);
         return seconds;
+    }
+
+    public void resetTime() {
+        initialTime = 0;
+        pausedTime = 0;
     }
 }
 
