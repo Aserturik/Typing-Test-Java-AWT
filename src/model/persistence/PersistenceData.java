@@ -66,7 +66,6 @@ public class PersistenceData {
 		Properties path = new Properties();
 		try (FileOutputStream output = new FileOutputStream("data/properties/path.properties")) {
 			path.setProperty("starterLanguage", getOptionLanguage());
-			System.out.println(getOptionLanguage());
 			path.store(output, null);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
