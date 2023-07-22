@@ -26,7 +26,7 @@ public class ControlModel implements Contract.Model {
     public void languageChange(String path) {
 		getPersistenceData().loadProperties(path);
 	}
-
+    
     @Override
     public void setPresenter(Contract.Presenter presenter) {
         this.presenter = presenter;
