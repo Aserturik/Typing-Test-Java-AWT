@@ -95,7 +95,6 @@ public class MyFrame extends JFrame implements Contract.View {
         setWPM(0);
     }
 
-
     public void setColorList(ArrayList<Color> colorList) {
         typingTestPanel.getBodyTyping().setColorList(colorList);
     }
