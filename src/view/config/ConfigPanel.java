@@ -118,7 +118,6 @@ public class ConfigPanel extends RightPanel {
         backMenuButton = new PrincipalButton(Constants.getProperty("backMenu"));
         backMenuButton.setActionCommand(Constants.BACK_MENU_CONFIG);
         backMenuButton.addActionListener(listener);
-        System.out.println("hi");
         this.add(backMenuButton, gbc);
     }
     
