@@ -16,9 +16,8 @@ public class MyFrame extends JFrame implements Contract.View {
     private TypingTestPanel typingTestPanel;
     private Contract.Presenter presenter;
     
-    public MyFrame(ActionListener actionListener) {
-//    	Constants.setProperties(properties);
-        System.out.println(Constants.getProperty("font"));
+    public MyFrame(ActionListener actionListener, Properties properties) {
+    	Constants.setProperties(properties);
         this.setTitle(Constants.getProperty("titleFrame"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 635);
@@ -26,17 +25,6 @@ public class MyFrame extends JFrame implements Contract.View {
         this.setResizable(false);
         setVisible(true);
     }
-    
-//    public MyFrame(ActionListener actionListener, Properties properties) {
-//    	Constants.setProperties(properties);
-//        System.out.println(Constants.getProperty("font"));
-//        this.setTitle(Constants.getProperty("titleFrame"));
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        setSize(1000, 635);
-//        initComponents(actionListener);
-//        this.setResizable(false);
-//        setVisible(true);
-//    }
     
     public void initComponents(ActionListener listener) {
         //controlTime = new ControlTime(10, listener);
@@ -119,4 +107,9 @@ public class MyFrame extends JFrame implements Contract.View {
     public void setWPM(int wpm) {
         typingTestPanel.getFooterTyping().setWPM(wpm);
     }
+    
+    public void closeApp() {
+    	JOptionPane.showMessageDialog(this, Constants.getProperty("messageRestart"),null, JOptionPane.WARNING_MESSAGE);
+    	this.dispose();
+	}
 }

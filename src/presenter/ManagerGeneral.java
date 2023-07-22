@@ -17,8 +17,7 @@ public class ManagerGeneral {
         presenter = new Presenter();
         ActionListener listener = presenter.getListener();
         model = new ControlModel();
-        view = new MyFrame(listener);
-//        view = new MyFrame(listener, model.getPersistenceData().getProperties());
+        view = new MyFrame(listener, model.getPersistenceData().getProperties());
 
         presenter.setModel(model);
         presenter.setView(view);

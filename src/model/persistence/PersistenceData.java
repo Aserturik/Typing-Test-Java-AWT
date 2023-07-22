@@ -20,67 +20,71 @@ public class PersistenceData {
 	private TestWords test1;
 	private Properties properties;
 	private PersistenceRecords records;
-	private String path;
+	private String optionLanguage;
 
 	public PersistenceData() {
 		testWords = new ArrayList<TestWords>();
-        path= new String();
+		optionLanguage = new String();
 		loadProperties();
 		loadAllTest();
 		loadRecords();
 	}
 
 	public void loadProperties() {
-        properties = new Properties();
-        try {
-        	switch (this.getPath()) {
-			case "ES":
-				properties.load(new FileReader("data/properties/dataES.properties"));
-				break;
-			case "EN":
-				properties.load(new FileReader("data/properties/dataEN.properties"));
-				break;
-			default:
-				properties.load(new FileReader(loadLanguage()));
-				break;
-			}
-        	Constants.setProperties(properties);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-	}
-	//Este es el que va a leer el path que se guarda. 
-	public String loadLanguage(){
-		Properties path = new Properties();
+		properties = new Properties();
 		try {
-			path.load(new FileReader("data/properties/path.properties"));	
+			properties.load(new FileReader(loadLanguage()));
 		} catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-		return path.getProperty("starterLanguage");
-	}
-	
-	public void writeNewPath() {
-		Properties path = new Properties();
-		try (OutputStream output = new FileOutputStream("data/properties/path.properties")){
-			path.setProperty("starterLanguage", getPath());
-		} catch (Exception e) {
-			// TODO: handle exception
+			throw new RuntimeException(e);
 		}
 	}
 
-	public String getPath() {
-		return path;
+	public void loadProperties(String path) {
+		switch (path) {
+		case "ES":
+			setOptionLanguage("data/properties/dataES.properties");
+			writeNewPath();
+			break;
+		case "EN":
+			setOptionLanguage("data/properties/dataEN.properties");
+			writeNewPath();
+			break;
+		}
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public String loadLanguage() {
+		Properties path = new Properties();
+		try {
+			path.load(new FileReader("data/properties/path.properties"));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		return path.getProperty("starterLanguage");
+	}
+
+	public void writeNewPath() {
+		Properties path = new Properties();
+		try (FileOutputStream output = new FileOutputStream("data/properties/path.properties")) {
+			path.setProperty("starterLanguage", getOptionLanguage());
+			System.out.println(getOptionLanguage());
+			path.store(output, null);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public String getOptionLanguage() {
+		return optionLanguage;
+	}
+
+	public void setOptionLanguage(String optionLanguage) {
+		this.optionLanguage = optionLanguage;
 	}
 
 	public Properties getProperties() {
 		return properties;
 	}
-	
+
 	public void setProperties(Properties properties) {
 		this.properties = properties;
 	}

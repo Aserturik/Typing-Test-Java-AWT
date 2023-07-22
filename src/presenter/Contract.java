@@ -44,6 +44,8 @@ public interface Contract {
 		void showPanelLessons();
 
 		void setPPM(int ppm);
+		
+		void closeApp();
 	}
 
 	public interface Model {

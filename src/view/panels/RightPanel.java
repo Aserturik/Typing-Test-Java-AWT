@@ -19,7 +19,7 @@ public class RightPanel extends JPanel {
     }
     public JLabel title(String titleString){
         JLabel title;
-        title = new JLabel(Constants.getProperty(titleString));
+        title = new JLabel(titleString);
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setFont(new Font(Constants.getProperty("arial"), Font.BOLD, 30));
         title.setForeground(Constants.WHITE);
@@ -27,7 +27,6 @@ public class RightPanel extends JPanel {
         title.setPreferredSize(new Dimension(488, 88));
         title.setMinimumSize(new Dimension(488, 88));
         title.setMaximumSize(new Dimension(488, 88));
-        title.setText(Constants.getProperty(titleString));
         return title;
     }
 

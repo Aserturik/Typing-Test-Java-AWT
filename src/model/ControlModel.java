@@ -24,8 +24,7 @@ public class ControlModel implements Contract.Model {
     }
     
     public void languageChange(String path) {
-    	getPersistenceData().setPath(path);
-		getPersistenceData().loadProperties();
+		getPersistenceData().loadProperties(path);
 	}
 
     @Override

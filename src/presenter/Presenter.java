@@ -1,6 +1,7 @@
 package presenter;
 
 import model.ControlModel;
+import sun.applet.Main;
 import util.Constants;
 
 import java.awt.event.*;
@@ -10,8 +11,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import javax.swing.JOptionPane;
+
 public class Presenter implements ActionListener, KeyListener, Contract.Presenter {
-	
+
 	private ControlModel controlModel;
 	private int indexTest;
 	private ArrayList<String> keyTyped;
@@ -141,28 +144,17 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
 	public void change() {
 		String language = view.getPrincipalPanel().languageChange();
+		ManagerGeneral managerGeneral = new ManagerGeneral();
 		switch (language) {
 		case "CHANGE TO SPANISH":
-			System.out.println(properties);
 			controlModel.languageChange("ES");
-//			controlModel.getPersistenceData().setPath("ES");
-//			controlModel.getPersistenceData().loadProperties();
-			this.properties=controlModel.getPersistenceData().getProperties();
-			view.getPrincipalPanel().getConfigPanel().setChange();//PILAS QUE ESTO HAY QUE BORRARLO
-			System.out.println("ES: "+ controlModel.getPersistenceData().getProperties());
-			System.out.println("ESp: "+properties);
-			view.getPrincipalPanel().test1(this);
-
+			view.closeApp();
+			managerGeneral.run();
 			break;
 		case "CAMBIAR A INGLES":
 			controlModel.languageChange("EN");
-			this.properties=controlModel.getPersistenceData().getProperties();
-//			controlModel.getPersistenceData().setPath("EN");
-//			controlModel.getPersistenceData().loadProperties();
-			view.getPrincipalPanel().getConfigPanel().setChange();
-			System.out.println("EN: "+controlModel.getPersistenceData().getProperties());
-			System.out.println("ENp: "+properties);
-			
+			view.closeApp();
+			managerGeneral.run();
 			break;
 		default:
 			break;

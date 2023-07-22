@@ -44,21 +44,18 @@ public class ConfigPanel extends RightPanel {
     }
 
     public void initComponents(Graphics2D gg) {
-//    	font(gg);
     	previewFont(gg);
         sizeTitle(gg);
     }
     
     public void title(){
-        JLabel title = super.title("settings");
+        JLabel title = super.title(Constants.getProperty("settings"));
         gbc.gridy = 0;
         this.add(title, gbc);
     }
-    
-   
 
     public void font(){
-        JLabel font = super.title("font");
+        JLabel font = super.title(Constants.getProperty("font"));
         gbc.gridy = 1;
         gbc.insets = new Insets(0,0,50,0);
         this.add(font, gbc);
@@ -74,7 +71,7 @@ public class ConfigPanel extends RightPanel {
     }
 
     public void previewFont(Graphics2D gg){
-//        String font = (String) fontComboBox.getSelectedItem();
+        String font = (String) fontComboBox.getSelectedItem();
         Font font1 = new Font(Constants.getProperty("arial"), Font.PLAIN, 25);
         gg.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         gg.setColor(Color.WHITE);
@@ -82,8 +79,6 @@ public class ConfigPanel extends RightPanel {
         gg.drawString(fontComboBox.getSelectedItem().toString(), 100, 190);
         repaint();
     }
-    
-    
 
     public void sizeFontComboBox(String[] sizes){
         fontSizeComboBox = new JComboBox<String>(sizes);
@@ -110,15 +105,6 @@ public class ConfigPanel extends RightPanel {
         repaint();
     }
     
-//    public void font(Graphics2D gg) {
-//        Font font1 = new Font(Constants.getProperty("arial"), Font.PLAIN, 25);
-//        gg.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        gg.setColor(Color.WHITE);
-//        gg.setFont(font1);
-//        gg.drawString(Constants.getProperty("font"),170, 100);
-//        repaint();
-//    }
-    
     public void languageChange(ActionListener listener) {
     	gbc = super.gbcPrincipalButton(gbc,0,5);
 		languageChange = new PrincipalButton(Constants.getProperty("languageChange"));
@@ -126,10 +112,6 @@ public class ConfigPanel extends RightPanel {
 		languageChange.addActionListener(listener);
 		this.add(languageChange, gbc);
 	}
-    
-    public void setChange() {
-		languageChange.setText(Constants.getProperty("languageChange"));
-    }
 
     public void backMenuButton(ActionListener listener){
         gbc = super.gbcPrincipalButton(gbc,0,10);
@@ -142,10 +124,6 @@ public class ConfigPanel extends RightPanel {
     
     public String languageChange() {
 		return languageChange.getText();
-	}
-    
-    public void test1(ActionListener listener) {
-    	this.initComponents(listener);
 	}
 
     public int getFontSize(){

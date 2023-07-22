@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.Properties;
 
 public class Constants {
-    private static Properties properties;
+    public static Properties properties;
 
     public static final Color WHITE = new Color(228, 242, 231);
     public static final Color LIGHT_GREEN = new Color(56, 115, 115);

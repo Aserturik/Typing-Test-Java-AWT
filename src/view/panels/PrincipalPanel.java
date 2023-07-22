@@ -98,6 +98,10 @@ public class PrincipalPanel extends JPanel {
         buttonsPrincipalPanel.setVisible(false);
         configPanel.setVisible(true);
     }
+    
+    public String languageChange() {
+		return configPanel.languageChange();
+	}
 
     public void progressPanel() {
         rightGBC();
@@ -122,14 +126,6 @@ public class PrincipalPanel extends JPanel {
     public ConfigPanel getConfigPanel() {
 		return configPanel;
 	}
-    
-    public String languageChange() {
-		return configPanel.languageChange();
-	}
-    
-    public void test1(ActionListener listener) {
-    	configPanel.test1(listener);
-    }
 
     public int getFontSize() {
         return configPanel.getFontSize();
