@@ -2,15 +2,10 @@ package presenter;
 
 import model.time.Cronometer;
 import java.awt.*;
-import util.Constants;
+import model.ControlModel;
 import java.awt.event.*;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
-import javax.swing.JOptionPane;
-import model.ControlModel;
 
 public class Presenter implements ActionListener, KeyListener, Contract.Presenter {
     private int indexTest;
