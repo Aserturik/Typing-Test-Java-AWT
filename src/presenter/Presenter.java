@@ -2,7 +2,6 @@ package presenter;
 
 import model.time.Cronometer;
 import java.awt.*;
-import model.ControlModel;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Properties;
