@@ -2,15 +2,9 @@ package presenter;
 
 import model.time.Cronometer;
 import java.awt.*;
-import util.Constants;
 import java.awt.event.*;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
-import javax.swing.JOptionPane;
-import model.ControlModel;
 
 public class Presenter implements ActionListener, KeyListener, Contract.Presenter {
     private int indexTest;
@@ -19,13 +13,11 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     private Contract.Model model;
     private Contract.View view;
     private String timerString;
-    private ControlModel controlModel;
     private boolean isRunning;
 
     public void run() {
         properties = model.getPersistenceData().getProperties();
         this.timerString = properties.getProperty("timeString");
-        controlModel = new ControlModel();
         keyTyped = new ArrayList<String>();
     }
 
@@ -147,7 +139,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
 	// Eventos para el panel de Configuracion
 	public void config() {
-		view.getPrincipalPanel().setSizesFont(controlModel.getPersistenceConfig().getFontSizes());
+		view.getPrincipalPanel().setSizesFont(model.getPersistenceConfig().getFontSizes());
 		view.getPrincipalPanel().showConfig();
 	}
 	public void change() {
@@ -155,13 +147,13 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 		ManagerGeneral managerGeneral = new ManagerGeneral();
 		switch (language) {
 		case "CHANGE TO SPANISH":
-			controlModel.languageChange("ES");
+			model.getLanguageChange("ES");
 			view.closeApp();
 			managerGeneral.run();
 			break;
 
 		case "CAMBIAR A INGLES":
-			controlModel.languageChange("EN");
+			model.getLanguageChange("EN");
 			view.closeApp();
 			managerGeneral.run();
 			break;

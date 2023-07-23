@@ -10,7 +10,6 @@ import view.typing.TypingTestPanel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Properties;
 
 public interface Contract {
 	public interface Presenter {
@@ -62,5 +61,6 @@ public interface Contract {
         void startCronometer();
         String getTimerString();
         Cronometer getCronometer();
+        void getLanguageChange(String optionLanguage);
     }
 }

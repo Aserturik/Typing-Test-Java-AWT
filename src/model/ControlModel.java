@@ -23,7 +23,7 @@ public class ControlModel implements Contract.Model {
         return persistenceData;
     }
     
-    public void languageChange(String path) {
+    public void getLanguageChange(String path) {
 		getPersistenceData().loadProperties(path);
 	}
     
