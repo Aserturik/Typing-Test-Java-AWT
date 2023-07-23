@@ -62,5 +62,6 @@ public interface Contract {
         void startCronometer();
         String getTimerString();
         Cronometer getCronometer();
+        void getLanguageChange();
     }
 }
