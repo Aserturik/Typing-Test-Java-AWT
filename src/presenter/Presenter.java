@@ -14,13 +14,11 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
     private Contract.Model model;
     private Contract.View view;
     private String timerString;
-    private ControlModel controlModel;
     private boolean isRunning;
 
     public void run() {
         properties = model.getPersistenceData().getProperties();
         this.timerString = properties.getProperty("timeString");
-        controlModel = new ControlModel();
         keyTyped = new ArrayList<String>();
     }
 
