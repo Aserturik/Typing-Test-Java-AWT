@@ -10,7 +10,6 @@ import view.typing.TypingTestPanel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Properties;
 
 public interface Contract {
 	public interface Presenter {
