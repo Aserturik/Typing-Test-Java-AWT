@@ -140,7 +140,7 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 
 	// Eventos para el panel de Configuracion
 	public void config() {
-		view.getPrincipalPanel().setSizesFont(controlModel.getPersistenceConfig().getFontSizes());
+		view.getPrincipalPanel().setSizesFont(model.getPersistenceConfig().getFontSizes());
 		view.getPrincipalPanel().showConfig();
 	}
 	public void change() {
@@ -148,13 +148,13 @@ public class Presenter implements ActionListener, KeyListener, Contract.Presente
 		ManagerGeneral managerGeneral = new ManagerGeneral();
 		switch (language) {
 		case "CHANGE TO SPANISH":
-			controlModel.languageChange("ES");
+			model.getLanguageChange("ES");
 			view.closeApp();
 			managerGeneral.run();
 			break;
 
 		case "CAMBIAR A INGLES":
-			controlModel.languageChange("EN");
+			model.getLanguageChange("EN");
 			view.closeApp();
 			managerGeneral.run();
 			break;
