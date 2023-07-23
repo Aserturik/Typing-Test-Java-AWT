@@ -1,10 +1,9 @@
 package presenter;
-
-import model.time.Cronometer;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Properties;
+import Global.Cronometer;
 
 public class Presenter implements ActionListener, KeyListener, Contract.Presenter {
     private int indexTest;

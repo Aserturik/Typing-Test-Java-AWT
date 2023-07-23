@@ -1,8 +1,8 @@
 package model;
 
+import Global.Cronometer;
 import model.persistence.PersistenceConfig;
 import model.persistence.PersistenceData;
-import model.time.Cronometer;
 import presenter.Contract;
 
 import java.awt.*;

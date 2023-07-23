@@ -1,6 +1,5 @@
 package view.typing;
 
-import model.time.Cronometer;
 import util.Constants;
 import view.buttons.TypingButton;
 

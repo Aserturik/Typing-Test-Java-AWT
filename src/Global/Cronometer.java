@@ -1,7 +1,4 @@
-package model.time;
-
-import model.ControlModel;
-
+package Global;
 public class Cronometer {
     private long initialTime;
     private long pausedTime;

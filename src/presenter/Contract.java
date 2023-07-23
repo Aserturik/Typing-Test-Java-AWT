@@ -3,7 +3,7 @@ package presenter;
 import model.TestWords;
 import model.persistence.PersistenceConfig;
 import model.persistence.PersistenceData;
-import model.time.Cronometer;
+import Global.Cronometer;
 import view.panels.PrincipalPanel;
 import view.typing.TypingTestPanel;
 
